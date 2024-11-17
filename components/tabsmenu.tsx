@@ -16,7 +16,7 @@ export default function App() {
               shadow="sm"
               radius="lg"
               width="100%"
-              alt={item.title}
+              alt={item.title} 
               className="w-full object-cover h-[145px]"
               src={item.img}
             />
