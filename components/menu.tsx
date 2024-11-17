@@ -12,7 +12,7 @@ export const Menu = () => {
         <ul className="w-full flex gap-4 justify-start">
           {siteConfig.navItems.map((item) => (
               
-              <motion.div
+              <motion.div 
                 whileHover={{ scale: 1.07 }}
                 whileTap={{ scale: 0.92 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
