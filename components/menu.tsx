@@ -18,6 +18,7 @@ export const Menu = () => {
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
                 onHoverStart={() => console.log('hover started!')}
                 className="w-full"
+                key={""}
                 >
               <NextLink
                  className={`w-full ${pathUrl === item.href ? "text-[#17c964]" : "opacity-70"}`}  href={item.href}           >
