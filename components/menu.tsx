@@ -8,9 +8,9 @@ import { motion } from "framer-motion";
 export const Menu = () => {
   const pathUrl = usePathname();
     return (
-      <div key={""} className="w-[90%] md:w-[400px] items-center justify-evenly flex justify-start p-2 outline-none bg-content1 outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none">
+      <div className="w-[90%] md:w-[400px] items-center justify-evenly flex justify-start p-2 outline-none bg-content1 outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none">
         <ul className="w-full flex gap-4 justify-start">
-          {siteConfig.navItems.map((item) => (
+          {siteConfig.navItems.map((item, index) => (
               
               <motion.div  
                 whileHover={{ scale: 1.07 }}
@@ -18,7 +18,7 @@ export const Menu = () => {
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
                 onHoverStart={() => console.log('hover started!')}
                 className="w-full"
-               
+                key={index}
                 >
               <NextLink
                  className={`w-full ${pathUrl === item.href ? "text-[#17c964]" : "opacity-70"}`}  href={item.href}           >
