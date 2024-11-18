@@ -25,9 +25,9 @@ export const siteConfig = {
 // ALL
 export const all = [
   {
-    title: "Английский завтрак",
+    title: "Английский завтрак ",
     categories: "Завтраки",
-    svg: <svg xmlns="http://www.w3.org/2000/svg" opacity=".8" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,20a9,9,0,1,1,9-9A9,9,0,0,1,12,21Z" /><rect width="2" height="7" x="11" y="6" fill="currentColor" rx="1"><animateTransform attributeName="transform" dur="25s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></rect><rect width="2" height="9" x="11" y="11" fill="currentColor" rx="1"><animateTransform attributeName="transform" dur="1.9s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></rect></svg>,
+    svg: <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 15 15"><path fill="none" stroke="currentColor" d="m.5 3.5l3-3m8 0l3 3M7.5 5v3.5H10m-2.5-6a6 6 0 1 0 0 12a6 6 0 0 0 0-12Z"/></svg>,
     timer: "20 мин | 500 кал",
     img: "/img/1.png",
     price: "999",
@@ -35,7 +35,7 @@ export const all = [
   {
     title: "Английский завтрак",
     categories: "Завтраки",
-    svg: <svg xmlns="http://www.w3.org/2000/svg" opacity=".8" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,20a9,9,0,1,1,9-9A9,9,0,0,1,12,21Z" /><rect width="2" height="7" x="11" y="6" fill="currentColor" rx="1"><animateTransform attributeName="transform" dur="25s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></rect><rect width="2" height="9" x="11" y="11" fill="currentColor" rx="1"><animateTransform attributeName="transform" dur="1.9s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></rect></svg>,
+    svg: <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 15 15"><path fill="none" stroke="currentColor" d="m.5 3.5l3-3m8 0l3 3M7.5 5v3.5H10m-2.5-6a6 6 0 1 0 0 12a6 6 0 0 0 0-12Z"/></svg>,
     timer: "20 мин | 500 кал",
     img: "/img/2.png",
     price: "999",
@@ -43,7 +43,7 @@ export const all = [
   {
     title: "Английский завтрак",
     categories: "Завтраки",
-    svg: <svg xmlns="http://www.w3.org/2000/svg" opacity=".8" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,20a9,9,0,1,1,9-9A9,9,0,0,1,12,21Z" /><rect width="2" height="7" x="11" y="6" fill="currentColor" rx="1"><animateTransform attributeName="transform" dur="25s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></rect><rect width="2" height="9" x="11" y="11" fill="currentColor" rx="1"><animateTransform attributeName="transform" dur="1.9s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></rect></svg>,
+    svg: <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 15 15"><path fill="none" stroke="currentColor" d="m.5 3.5l3-3m8 0l3 3M7.5 5v3.5H10m-2.5-6a6 6 0 1 0 0 12a6 6 0 0 0 0-12Z"/></svg>,
     timer: "20 мин | 500 кал",
     img: "/img/3.png",
     price: "999",
@@ -51,7 +51,7 @@ export const all = [
   {
     title: "Английский завтрак",
     categories: "Завтраки",
-    svg: <svg xmlns="http://www.w3.org/2000/svg" opacity=".8" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,20a9,9,0,1,1,9-9A9,9,0,0,1,12,21Z" /><rect width="2" height="7" x="11" y="6" fill="currentColor" rx="1"><animateTransform attributeName="transform" dur="25s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></rect><rect width="2" height="9" x="11" y="11" fill="currentColor" rx="1"><animateTransform attributeName="transform" dur="1.9s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></rect></svg>,
+    svg: <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 15 15"><path fill="none" stroke="currentColor" d="m.5 3.5l3-3m8 0l3 3M7.5 5v3.5H10m-2.5-6a6 6 0 1 0 0 12a6 6 0 0 0 0-12Z"/></svg>,
     timer: "20 мин | 500 кал",
     img: "/img/4.png",
     price: "999",
@@ -59,7 +59,7 @@ export const all = [
   {
     title: "Английский завтрак",
     categories: "Завтраки",
-    svg: <svg xmlns="http://www.w3.org/2000/svg" opacity=".8" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,20a9,9,0,1,1,9-9A9,9,0,0,1,12,21Z" /><rect width="2" height="7" x="11" y="6" fill="currentColor" rx="1"><animateTransform attributeName="transform" dur="25s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></rect><rect width="2" height="9" x="11" y="11" fill="currentColor" rx="1"><animateTransform attributeName="transform" dur="1.9s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></rect></svg>,
+    svg: <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 15 15"><path fill="none" stroke="currentColor" d="m.5 3.5l3-3m8 0l3 3M7.5 5v3.5H10m-2.5-6a6 6 0 1 0 0 12a6 6 0 0 0 0-12Z"/></svg>,
     timer: "20 мин | 500 кал",
     img: "/img/5.png",
     price: "999",
@@ -67,7 +67,7 @@ export const all = [
   {
     title: "Английский завтрак",
     categories: "Завтраки",
-    svg: <svg xmlns="http://www.w3.org/2000/svg" opacity=".8" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,20a9,9,0,1,1,9-9A9,9,0,0,1,12,21Z" /><rect width="2" height="7" x="11" y="6" fill="currentColor" rx="1"><animateTransform attributeName="transform" dur="25s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></rect><rect width="2" height="9" x="11" y="11" fill="currentColor" rx="1"><animateTransform attributeName="transform" dur="1.9s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></rect></svg>,
+    svg: <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 15 15"><path fill="none" stroke="currentColor" d="m.5 3.5l3-3m8 0l3 3M7.5 5v3.5H10m-2.5-6a6 6 0 1 0 0 12a6 6 0 0 0 0-12Z"/></svg>,
     timer: "20 мин | 500 кал",
     img: "/img/6.png",
     price: "999",
@@ -75,7 +75,7 @@ export const all = [
   {
     title: "Английский завтрак",
     categories: "Завтраки",
-    svg: <svg xmlns="http://www.w3.org/2000/svg" opacity=".8" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,20a9,9,0,1,1,9-9A9,9,0,0,1,12,21Z" /><rect width="2" height="7" x="11" y="6" fill="currentColor" rx="1"><animateTransform attributeName="transform" dur="25s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></rect><rect width="2" height="9" x="11" y="11" fill="currentColor" rx="1"><animateTransform attributeName="transform" dur="1.9s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></rect></svg>,
+    svg: <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 15 15"><path fill="none" stroke="currentColor" d="m.5 3.5l3-3m8 0l3 3M7.5 5v3.5H10m-2.5-6a6 6 0 1 0 0 12a6 6 0 0 0 0-12Z"/></svg>,
     timer: "20 мин | 500 кал",
     img: "/img/7.png",
     price: "999",
@@ -83,7 +83,7 @@ export const all = [
   {
     title: "Английский завтрак",
     categories: "Завтраки",
-    svg: <svg xmlns="http://www.w3.org/2000/svg" opacity=".8" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,20a9,9,0,1,1,9-9A9,9,0,0,1,12,21Z" /><rect width="2" height="7" x="11" y="6" fill="currentColor" rx="1"><animateTransform attributeName="transform" dur="25s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></rect><rect width="2" height="9" x="11" y="11" fill="currentColor" rx="1"><animateTransform attributeName="transform" dur="1.9s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></rect></svg>,
+    svg: <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 15 15"><path fill="none" stroke="currentColor" d="m.5 3.5l3-3m8 0l3 3M7.5 5v3.5H10m-2.5-6a6 6 0 1 0 0 12a6 6 0 0 0 0-12Z"/></svg>,
     timer: "20 мин | 500 кал",
     img: "/img/8.png",
     price: "999",
@@ -91,7 +91,7 @@ export const all = [
   {
     title: "Английский завтрак",
     categories: "Завтраки",
-    svg: <svg xmlns="http://www.w3.org/2000/svg" opacity=".8" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,20a9,9,0,1,1,9-9A9,9,0,0,1,12,21Z" /><rect width="2" height="7" x="11" y="6" fill="currentColor" rx="1"><animateTransform attributeName="transform" dur="25s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></rect><rect width="2" height="9" x="11" y="11" fill="currentColor" rx="1"><animateTransform attributeName="transform" dur="1.9s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></rect></svg>,
+    svg: <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 15 15"><path fill="none" stroke="currentColor" d="m.5 3.5l3-3m8 0l3 3M7.5 5v3.5H10m-2.5-6a6 6 0 1 0 0 12a6 6 0 0 0 0-12Z"/></svg>,
     timer: "20 мин | 500 кал",
     img: "/img/9.png",
     price: "999",
@@ -99,7 +99,7 @@ export const all = [
   {
     title: "Английский завтрак",
     categories: "Завтраки",
-    svg: <svg xmlns="http://www.w3.org/2000/svg" opacity=".8" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,20a9,9,0,1,1,9-9A9,9,0,0,1,12,21Z" /><rect width="2" height="7" x="11" y="6" fill="currentColor" rx="1"><animateTransform attributeName="transform" dur="25s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></rect><rect width="2" height="9" x="11" y="11" fill="currentColor" rx="1"><animateTransform attributeName="transform" dur="1.9s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></rect></svg>,
+    svg: <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 15 15"><path fill="none" stroke="currentColor" d="m.5 3.5l3-3m8 0l3 3M7.5 5v3.5H10m-2.5-6a6 6 0 1 0 0 12a6 6 0 0 0 0-12Z"/></svg>,
     timer: "20 мин | 500 кал",
     img: "/img/10.png",
     price: "999",
@@ -107,7 +107,7 @@ export const all = [
   {
     title: "Английский завтрак",
     categories: "Завтраки",
-    svg: <svg xmlns="http://www.w3.org/2000/svg" opacity=".8" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,20a9,9,0,1,1,9-9A9,9,0,0,1,12,21Z" /><rect width="2" height="7" x="11" y="6" fill="currentColor" rx="1"><animateTransform attributeName="transform" dur="25s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></rect><rect width="2" height="9" x="11" y="11" fill="currentColor" rx="1"><animateTransform attributeName="transform" dur="1.9s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></rect></svg>,
+    svg: <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 15 15"><path fill="none" stroke="currentColor" d="m.5 3.5l3-3m8 0l3 3M7.5 5v3.5H10m-2.5-6a6 6 0 1 0 0 12a6 6 0 0 0 0-12Z"/></svg>,
     timer: "20 мин | 500 кал",
     img: "/img/12.png",
     price: "999",
@@ -115,7 +115,7 @@ export const all = [
   {
     title: "Английский завтрак",
     categories: "Завтраки",
-    svg: <svg xmlns="http://www.w3.org/2000/svg" opacity=".8" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,20a9,9,0,1,1,9-9A9,9,0,0,1,12,21Z" /><rect width="2" height="7" x="11" y="6" fill="currentColor" rx="1"><animateTransform attributeName="transform" dur="25s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></rect><rect width="2" height="9" x="11" y="11" fill="currentColor" rx="1"><animateTransform attributeName="transform" dur="1.9s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></rect></svg>,
+    svg: <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 15 15"><path fill="none" stroke="currentColor" d="m.5 3.5l3-3m8 0l3 3M7.5 5v3.5H10m-2.5-6a6 6 0 1 0 0 12a6 6 0 0 0 0-12Z"/></svg>,
     timer: "20 мин | 500 кал",
     img: "/img/13.png",
     price: "999",
@@ -123,7 +123,7 @@ export const all = [
   {
     title: "Английский завтрак",
     categories: "Завтраки",
-    svg: <svg xmlns="http://www.w3.org/2000/svg" opacity=".8" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,20a9,9,0,1,1,9-9A9,9,0,0,1,12,21Z" /><rect width="2" height="7" x="11" y="6" fill="currentColor" rx="1"><animateTransform attributeName="transform" dur="25s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></rect><rect width="2" height="9" x="11" y="11" fill="currentColor" rx="1"><animateTransform attributeName="transform" dur="1.9s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></rect></svg>,
+    svg: <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 15 15"><path fill="none" stroke="currentColor" d="m.5 3.5l3-3m8 0l3 3M7.5 5v3.5H10m-2.5-6a6 6 0 1 0 0 12a6 6 0 0 0 0-12Z"/></svg>,
     timer: "20 мин | 500 кал",
     img: "/img/14.png",
     price: "999",
@@ -131,7 +131,7 @@ export const all = [
   {
     title: "Английский завтрак",
     categories: "Завтраки",
-    svg: <svg xmlns="http://www.w3.org/2000/svg" opacity=".8" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,20a9,9,0,1,1,9-9A9,9,0,0,1,12,21Z" /><rect width="2" height="7" x="11" y="6" fill="currentColor" rx="1"><animateTransform attributeName="transform" dur="25s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></rect><rect width="2" height="9" x="11" y="11" fill="currentColor" rx="1"><animateTransform attributeName="transform" dur="1.9s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></rect></svg>,
+    svg: <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 15 15"><path fill="none" stroke="currentColor" d="m.5 3.5l3-3m8 0l3 3M7.5 5v3.5H10m-2.5-6a6 6 0 1 0 0 12a6 6 0 0 0 0-12Z"/></svg>,
     timer: "20 мин | 500 кал",
     img: "/img/15.png",
     price: "999",
@@ -139,7 +139,7 @@ export const all = [
   {
     title: "Английский завтрак",
     categories: "Завтраки",
-    svg: <svg xmlns="http://www.w3.org/2000/svg" opacity=".8" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,20a9,9,0,1,1,9-9A9,9,0,0,1,12,21Z" /><rect width="2" height="7" x="11" y="6" fill="currentColor" rx="1"><animateTransform attributeName="transform" dur="25s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></rect><rect width="2" height="9" x="11" y="11" fill="currentColor" rx="1"><animateTransform attributeName="transform" dur="1.9s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></rect></svg>,
+    svg: <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 15 15"><path fill="none" stroke="currentColor" d="m.5 3.5l3-3m8 0l3 3M7.5 5v3.5H10m-2.5-6a6 6 0 1 0 0 12a6 6 0 0 0 0-12Z"/></svg>,
     timer: "20 мин | 500 кал",
     img: "/img/16.png",
     price: "999",
@@ -147,7 +147,7 @@ export const all = [
   {
     title: "Английский завтрак",
     categories: "Завтраки",
-    svg: <svg xmlns="http://www.w3.org/2000/svg" opacity=".8" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,20a9,9,0,1,1,9-9A9,9,0,0,1,12,21Z" /><rect width="2" height="7" x="11" y="6" fill="currentColor" rx="1"><animateTransform attributeName="transform" dur="25s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></rect><rect width="2" height="9" x="11" y="11" fill="currentColor" rx="1"><animateTransform attributeName="transform" dur="1.9s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></rect></svg>,
+    svg: <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 15 15"><path fill="none" stroke="currentColor" d="m.5 3.5l3-3m8 0l3 3M7.5 5v3.5H10m-2.5-6a6 6 0 1 0 0 12a6 6 0 0 0 0-12Z"/></svg>,
     timer: "20 мин | 500 кал",
     img: "/img/17.png",
     price: "999",
@@ -155,7 +155,7 @@ export const all = [
   {
     title: "Английский завтрак",
     categories: "Завтраки",
-    svg: <svg xmlns="http://www.w3.org/2000/svg" opacity=".8" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,20a9,9,0,1,1,9-9A9,9,0,0,1,12,21Z" /><rect width="2" height="7" x="11" y="6" fill="currentColor" rx="1"><animateTransform attributeName="transform" dur="25s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></rect><rect width="2" height="9" x="11" y="11" fill="currentColor" rx="1"><animateTransform attributeName="transform" dur="1.9s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></rect></svg>,
+    svg: <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 15 15"><path fill="none" stroke="currentColor" d="m.5 3.5l3-3m8 0l3 3M7.5 5v3.5H10m-2.5-6a6 6 0 1 0 0 12a6 6 0 0 0 0-12Z"/></svg>,
     timer: "20 мин | 500 кал",
     img: "/img/18.png",
     price: "999",
