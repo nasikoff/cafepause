@@ -8,22 +8,33 @@ export default function App() {
     {
       id: "all",
       label: "Все",
-      content: <div className="gap-2 flex flex flex-wrap p-0 justify-between">
+      content: <div className="gap-5 flex flex flex-wrap p-0 py-3">
       {all.map((item, index) => (
-        <Card shadow="sm" key={index} isPressable className="!p-0 w-[155px]">
+        <Card shadow="sm" key={index} isPressable  className="!p-0 w-[180px]">
           <CardBody className="overflow-visible p-0">
             <Image
               shadow="sm"
               radius="lg"
               width="100%"
+              sizes="80%"
+              isBlurred
               alt={item.title} 
-              className="w-full object-cover h-[145px]"
+              className="w-full object-cover h-[140px]"
               src={item.img}
             />
           </CardBody>
-          <CardFooter className="text-small justify-between">
-            <b>{item.title}</b>
-            <p className="text-default-500">{item.price}</p>
+          <CardFooter className="text-small text-left">
+          <div className="flex flex-col pb-1">
+          <h1 className="font-bold pb-1">{item.title}</h1>
+          <h2 className="flex gap-1 pb-3 items-center font-extralight">{item.svg}{item.timer}</h2>
+
+
+          <h2 className="font-bold text-base">₽{item.price}</h2>
+          </div>
+
+
+
+            
           </CardFooter>
         </Card>
       ))}
@@ -47,15 +58,11 @@ export default function App() {
   ];
 
   return (
-    <div className="flex w-full flex-col">
-      <Tabs aria-label="Dynamic tabs" items={tabs}>
+    <div className="flex w-full flex-col bg-transparent">
+      <Tabs aria-label="Dynamic tabs" items={tabs} >
         {(item) => (
-          <Tab key={item.id} title={item.label}>
-            <Card>
-              <CardBody>
+          <Tab key={item.id} title={item.label} className="bg-transparent">
                 {item.content}
-              </CardBody>
-            </Card>  
           </Tab>
         )}
       </Tabs>
