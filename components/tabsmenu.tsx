@@ -45,7 +45,6 @@ export default function App() {
             <CardBody className="overflow-visible p-0">
               <Image
                 width="100%"
-                isBlurred
                 alt={item.title}
                 className="w-full object-contain h-[140px] w-full p-2"
                 src={item.img}
