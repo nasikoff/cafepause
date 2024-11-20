@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     template: `%s - ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  viewport: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0",
   icons: {
     icon: "/favicon.ico",
   },
@@ -32,6 +33,7 @@ export default function RootLayout({
 }) {
   return (
     <html suppressHydrationWarning lang="ru">
+      
       <head />
       <body
         className={clsx(
