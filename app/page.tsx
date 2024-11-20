@@ -12,17 +12,17 @@ import Tabsmenu from "@/components/tabsmenu";
 export default function Home() {
   return (
     <>
-    <section className="flex flex-col gap-4 pb-5 pt-8 md:py-5">
+    <section className="flex flex-col gap-4 py-5 pt-8 md:py-5">
       <div className="inline-block max-w-xl text-left">
         <span className={title()}>Добро пожаловать в&nbsp;</span>
         <br />
         <span className={title({ color: "green" })}>pa||se&nbsp;</span>
 
-        <h2 className="py-4 text-sm lg:text-xl font-normal text-default-500 block max-w-full   text-left md:text-left">Отвлекись на небольшую паузу в нашем кафе</h2>
+        <h2 className="pt-4 text-sm lg:text-xl font-normal text-default-500 block max-w-full   text-left md:text-left">Отвлекись на небольшую паузу в нашем кафе</h2>
       </div>
     </section>
     
-    <section className="flex flex-col gap-4 py-5 md:py-5 md:pb-24 pb-24">
+    <section className="flex flex-col gap-4   md:pb-24 pb-24">
        <Tabsmenu/> 
       </section>
       
