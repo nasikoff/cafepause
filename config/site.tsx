@@ -22,214 +22,45 @@ export const siteConfig = {
   ],
 };
 
-// ALL
-export const all = [
+// ДОБАВИТЬ МЕНЮ
+export const menupause = [
   {
-    title: "Английский завтрак ",
+    title: "Английский завтрак",
     categories: "Завтраки",
+    description: "Английский завтрак - это традиционный и плотный завтрак, который включает в себя яичницу, бекон, обжаренные помидоры, грибы, сосиски, фасоль в томатном соусе, гречку или тосты с маслом.",
     svg: <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 15 15"><path fill="none" stroke="currentColor" d="m.5 3.5l3-3m8 0l3 3M7.5 5v3.5H10m-2.5-6a6 6 0 1 0 0 12a6 6 0 0 0 0-12Z"/></svg>,
-    timer: "20 мин | 500 кал",
+    timer: "15 мин",
+    calories: "345 кал",
     img: "/img/1.png",
-    price: "999",
+    price: "549",
   },
   {
-    title: "Английский завтрак",
+    title: "Овсянка с ягодами",
     categories: "Завтраки",
     svg: <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 15 15"><path fill="none" stroke="currentColor" d="m.5 3.5l3-3m8 0l3 3M7.5 5v3.5H10m-2.5-6a6 6 0 1 0 0 12a6 6 0 0 0 0-12Z"/></svg>,
-    timer: "20 мин | 500 кал",
+    timer: "20 мин",
+    calories: "400 кал",
     img: "/img/2.png",
-    price: "999",
+    price: "459",
   },
   {
-    title: "Английский завтрак",
-    categories: "Завтраки",
+    title: "Яичница с овощами",
+    categories: "Обед",
     svg: <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 15 15"><path fill="none" stroke="currentColor" d="m.5 3.5l3-3m8 0l3 3M7.5 5v3.5H10m-2.5-6a6 6 0 1 0 0 12a6 6 0 0 0 0-12Z"/></svg>,
-    timer: "20 мин | 500 кал",
+    timer: "17 мин",
+    calories: "600 кал",
     img: "/img/3.png",
-    price: "999",
+    price: "690",
   },
   {
-    title: "Английский завтрак",
-    categories: "Завтраки",
+    title: "НАЗВАНИЯ БЛЮДА",
+    categories: "Обед",
     svg: <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 15 15"><path fill="none" stroke="currentColor" d="m.5 3.5l3-3m8 0l3 3M7.5 5v3.5H10m-2.5-6a6 6 0 1 0 0 12a6 6 0 0 0 0-12Z"/></svg>,
-    timer: "20 мин | 500 кал",
+    timer: "-- мин",
+    calories: "--- кал",
     img: "/img/4.png",
-    price: "999",
-  },
-  {
-    title: "Английский завтрак",
-    categories: "Завтраки",
-    svg: <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 15 15"><path fill="none" stroke="currentColor" d="m.5 3.5l3-3m8 0l3 3M7.5 5v3.5H10m-2.5-6a6 6 0 1 0 0 12a6 6 0 0 0 0-12Z"/></svg>,
-    timer: "20 мин | 500 кал",
-    img: "/img/5.png",
-    price: "999",
-  },
-  {
-    title: "Английский завтрак",
-    categories: "Завтраки",
-    svg: <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 15 15"><path fill="none" stroke="currentColor" d="m.5 3.5l3-3m8 0l3 3M7.5 5v3.5H10m-2.5-6a6 6 0 1 0 0 12a6 6 0 0 0 0-12Z"/></svg>,
-    timer: "20 мин | 500 кал",
-    img: "/img/6.png",
-    price: "999",
-  },
-  {
-    title: "Английский завтрак",
-    categories: "Завтраки",
-    svg: <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 15 15"><path fill="none" stroke="currentColor" d="m.5 3.5l3-3m8 0l3 3M7.5 5v3.5H10m-2.5-6a6 6 0 1 0 0 12a6 6 0 0 0 0-12Z"/></svg>,
-    timer: "20 мин | 500 кал",
-    img: "/img/7.png",
-    price: "999",
-  },
-  {
-    title: "Английский завтрак",
-    categories: "Завтраки",
-    svg: <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 15 15"><path fill="none" stroke="currentColor" d="m.5 3.5l3-3m8 0l3 3M7.5 5v3.5H10m-2.5-6a6 6 0 1 0 0 12a6 6 0 0 0 0-12Z"/></svg>,
-    timer: "20 мин | 500 кал",
-    img: "/img/8.png",
-    price: "999",
-  },
-  {
-    title: "Английский завтрак",
-    categories: "Завтраки",
-    svg: <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 15 15"><path fill="none" stroke="currentColor" d="m.5 3.5l3-3m8 0l3 3M7.5 5v3.5H10m-2.5-6a6 6 0 1 0 0 12a6 6 0 0 0 0-12Z"/></svg>,
-    timer: "20 мин | 500 кал",
-    img: "/img/9.png",
-    price: "999",
-  },
-  {
-    title: "Английский завтрак",
-    categories: "Завтраки",
-    svg: <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 15 15"><path fill="none" stroke="currentColor" d="m.5 3.5l3-3m8 0l3 3M7.5 5v3.5H10m-2.5-6a6 6 0 1 0 0 12a6 6 0 0 0 0-12Z"/></svg>,
-    timer: "20 мин | 500 кал",
-    img: "/img/10.png",
-    price: "999",
-  },
-  {
-    title: "Английский завтрак",
-    categories: "Завтраки",
-    svg: <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 15 15"><path fill="none" stroke="currentColor" d="m.5 3.5l3-3m8 0l3 3M7.5 5v3.5H10m-2.5-6a6 6 0 1 0 0 12a6 6 0 0 0 0-12Z"/></svg>,
-    timer: "20 мин | 500 кал",
-    img: "/img/12.png",
-    price: "999",
-  },
-  {
-    title: "Английский завтрак",
-    categories: "Завтраки",
-    svg: <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 15 15"><path fill="none" stroke="currentColor" d="m.5 3.5l3-3m8 0l3 3M7.5 5v3.5H10m-2.5-6a6 6 0 1 0 0 12a6 6 0 0 0 0-12Z"/></svg>,
-    timer: "20 мин | 500 кал",
-    img: "/img/13.png",
-    price: "999",
-  },
-  {
-    title: "Английский завтрак",
-    categories: "Завтраки",
-    svg: <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 15 15"><path fill="none" stroke="currentColor" d="m.5 3.5l3-3m8 0l3 3M7.5 5v3.5H10m-2.5-6a6 6 0 1 0 0 12a6 6 0 0 0 0-12Z"/></svg>,
-    timer: "20 мин | 500 кал",
-    img: "/img/14.png",
-    price: "999",
-  },
-  {
-    title: "Английский завтрак",
-    categories: "Завтраки",
-    svg: <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 15 15"><path fill="none" stroke="currentColor" d="m.5 3.5l3-3m8 0l3 3M7.5 5v3.5H10m-2.5-6a6 6 0 1 0 0 12a6 6 0 0 0 0-12Z"/></svg>,
-    timer: "20 мин | 500 кал",
-    img: "/img/15.png",
-    price: "999",
-  },
-  {
-    title: "Английский завтрак",
-    categories: "Завтраки",
-    svg: <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 15 15"><path fill="none" stroke="currentColor" d="m.5 3.5l3-3m8 0l3 3M7.5 5v3.5H10m-2.5-6a6 6 0 1 0 0 12a6 6 0 0 0 0-12Z"/></svg>,
-    timer: "20 мин | 500 кал",
-    img: "/img/16.png",
-    price: "999",
-  },
-  {
-    title: "Английский завтрак",
-    categories: "Завтраки",
-    svg: <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 15 15"><path fill="none" stroke="currentColor" d="m.5 3.5l3-3m8 0l3 3M7.5 5v3.5H10m-2.5-6a6 6 0 1 0 0 12a6 6 0 0 0 0-12Z"/></svg>,
-    timer: "20 мин | 500 кал",
-    img: "/img/17.png",
-    price: "999",
-  },
-  {
-    title: "Английский завтрак",
-    categories: "Завтраки",
-    svg: <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 15 15"><path fill="none" stroke="currentColor" d="m.5 3.5l3-3m8 0l3 3M7.5 5v3.5H10m-2.5-6a6 6 0 1 0 0 12a6 6 0 0 0 0-12Z"/></svg>,
-    timer: "20 мин | 500 кал",
-    img: "/img/18.png",
-    price: "999",
+    price: "0",
   },
 ];
 
-//COFE
-export const cofe = [
-  {
-    title: "Orange",
-    img: "/images/fruit-1.jpeg",
-    price: "$5.50",
-  },
-  {
-    title: "Tangerine",
-    img: "/images/fruit-2.jpeg",
-    price: "$3.00",
-  },
-  {
-    title: "Raspberry",
-    img: "/images/fruit-3.jpeg",
-    price: "$10.00",
-  },
-  {
-    title: "Lemon",
-    img: "/images/fruit-4.jpeg",
-    price: "$5.30",
-  },
-];
-
-// Cocktails
-export const cocktails = [
-  {
-    title: "Orange",
-    img: "/images/fruit-1.jpeg",
-    price: "$5.50",
-  },
-  {
-    title: "Tangerine",
-    img: "/images/fruit-2.jpeg",
-    price: "$3.00",
-  },
-  {
-    title: "Raspberry",
-    img: "/images/fruit-3.jpeg",
-    price: "$10.00",
-  },
-];
-
-// Breakfast
-export const breakfast = [
-  {
-    title: "Orange",
-    img: "/images/fruit-1.jpeg",
-    price: "$5.50",
-  },
-  {
-    title: "Tangerine",
-    img: "/images/fruit-2.jpeg",
-    price: "$3.00",
-  },
-  {
-    title: "Raspberry",
-    img: "/images/fruit-3.jpeg",
-    price: "$10.00",
-  },
-  {
-    title: "Tangerine",
-    img: "/images/fruit-2.jpeg",
-    price: "$3.00",
-  },
-  {
-    title: "Raspberry",
-    img: "/images/fruit-3.jpeg",
-    price: "$10.00",
-  },
-];
+ 
