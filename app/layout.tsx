@@ -6,6 +6,7 @@ import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
 import { Navbar } from "@/components/navbar";
 import { Menu } from "@/components/menu";
+import { Head } from "next/document";
 
 export const metadata: Metadata = {
   title: {
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
     template: `%s - ${siteConfig.name}`,
   },
   description: siteConfig.description,
-  viewport: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0",
+  
   icons: {
     icon: "/favicon.ico",
   },
@@ -34,7 +35,9 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning lang="ru">
       
-      <head />
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+      </head>
       <body
         className={clsx(
           "min-h-screen bg-background font-sans antialiased",
