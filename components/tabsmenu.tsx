@@ -83,18 +83,18 @@ export default function App() {
         )}
       </Tabs>
 
-      <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+      <Modal   size={"xl"}  isOpen={isOpen} onOpenChange={onOpenChange}>
         <ModalContent>
           {(onClose) => (
             <ModalBody className="px-4">
               {selectedItem && (
                 <div>
                   <Image
-                    width="400px"
-                    height="300px"
+                    width="100%"
+                    height="250px"
                     alt={selectedItem.title}
                     src={selectedItem.img}
-                    className="p-8 object-contain"
+                    className="px-8 mt-6 object-contain"
                   />
                   <div className="flex flex-row pb-5">
                     <div className="basis-full font-bold text-base ssm:text-lg">{selectedItem.title}</div>
@@ -107,7 +107,7 @@ export default function App() {
                       <p className="flex items-center gap-1 text-2xl font-bold"><Calories height={28} />{selectedItem.calories}</p>
                     </div>
                   </div>
-                  <p className="pb-5 opacity-80">{selectedItem.description || 'Описание отсутствует'}</p>
+                  <p className="pb-5 opacity-80 h-[80px] overflow-auto mb-5">{selectedItem.description || 'Описание отсутствует'}</p>
                   <h2 className="font-bold text-2xl pb-5">₽{selectedItem.price}</h2>
                 </div>
               )}
