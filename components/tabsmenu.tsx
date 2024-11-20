@@ -88,6 +88,7 @@ export default function App() {
         input: "text-small",
         inputWrapper: "h-full font-normal text-default-500 backdrop-blur-lg bg-background/70 ",
       }}
+      style={{ fontSize: '16px' }}
       placeholder="Поиск блюд"
       size="md"
       variant="bordered"
