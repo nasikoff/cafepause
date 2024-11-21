@@ -1,5 +1,5 @@
-'use client';
-import { menupause } from "@/config/site";
+"use client";
+import { menupause } from "@/config/site"; // Импорт меню
 import {
   Tabs,
   Tab,
@@ -14,7 +14,7 @@ import {
   Input,
   Button,
 } from "@nextui-org/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Calories, SearchIcon, Timer } from "./icons";
 import { Notify } from "@/components/notify";
 
@@ -29,11 +29,10 @@ interface MenuItem {
   description?: string;
 }
 
-// Интерфейс для уведомления
 interface Notification {
   message: string;
   visible: boolean;
-  type: 'success' | 'warning'; // Добавляем тип
+  type: 'success' | 'warning';
 }
 
 export default function App() {
@@ -43,8 +42,12 @@ export default function App() {
   const [selectedItem, setSelectedItem] = useState<MenuItem | null>(null);
   const [notification, setNotification] = useState<Notification>({ message: '', visible: false, type: 'success' });
 
+  const [cartItems, setCartItems] = useState<MenuItem[]>(() => {
+    const storedCart = localStorage.getItem('cart');
+    return storedCart ? JSON.parse(storedCart) : [];
+  });
+
   const filteredMenu = categories.map((category) => {
-    // Фильтруем элементы для этой категории
     const items = (category === 'Все' ? menupause : menupause.filter(item => item.categories === category)).filter(item =>
       item.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
@@ -55,35 +58,37 @@ export default function App() {
       content: (
         <div className="gap-5 flex flex-wrap p-0 py-3">
           {items.length === 0 ? (
-            <p>😯 Блюда не найдены</p> // Сообщение о том, что нет блюд
+            <p>😯 Блюда не найдены</p>
           ) : (
-            items.map((item, index) => (
-              <Card
-                shadow="sm"
-                key={index}
-                isPressable
-                className="!p-0 w-full ssm:w-[180px] flex-row ssm:flex-col"
-                onPress={() => handleCardPress(item as unknown as MenuItem)}
-              >
-                <CardBody className="overflow-visible p-0">
-                  <Image
-                    width="100%"
-                    alt={item.title}
-                    className="w-full object-contain h-[140px] w-full p-2"
-                    src={item.img}
-                  />
-                </CardBody>
-                <CardFooter className="text-small text-left">
-                  <div className="flex flex-col pb-1">
-                    <h1 className="font-bold pb-1">{item.title}</h1>
-                    <h2 className="flex gap-1 pb-3 items-center font-extralight">
-                      {item.svg}{item.timer} | {item.calories}
-                    </h2>
-                    <h2 className="font-bold text-base absolute bottom-3 ssm:bottom-auto ssm:relative ">₽{item.price}</h2>
-                  </div>
-                </CardFooter>
-              </Card>
-            ))
+            items.map((item, index) => {
+              return (
+                <Card
+                  shadow="sm"
+                  key={index}
+                  isPressable
+                  className="!p-0 w-full ssm:w-[180px] flex-row ssm:flex-col"
+                  onPress={() => handleCardPress(item as unknown as MenuItem)}
+                >
+                  <CardBody className="overflow-visible p-0">
+                    <Image
+                      width="100%"
+                      alt={item.title}
+                      className="w-full object-contain h-[140px] w-full p-2"
+                      src={item.img}
+                    />
+                  </CardBody>
+                  <CardFooter className="text-small text-left">
+                    <div className="flex flex-col pb-1">
+                      <h1 className="font-bold pb-1">{item.title}</h1>
+                      <h2 className="flex gap-1 pb-3 items-center font-extralight">
+                        {item.svg}{item.timer} | {item.calories}
+                      </h2>
+                      <h2 className="font-bold text-base absolute bottom-3 ssm:bottom-auto ssm:relative ">₽{item.price}</h2>                  
+                    </div>
+                  </CardFooter>
+                </Card>
+              );
+            })
           )}
         </div>
       )
@@ -96,22 +101,36 @@ export default function App() {
   };
 
   const addToCart = (item: MenuItem) => {
-    const storedItems = JSON.parse(localStorage.getItem('cart') || '[]');
+    if (!cartItems.some(cartItem => cartItem.title === item.title)) {
+      const updatedItems = [...cartItems, item];
+      setCartItems(updatedItems);
+      localStorage.setItem('cart', JSON.stringify(updatedItems));
 
-    // Проверяем, есть ли уже такое блюдо в корзине
-    const itemExists = storedItems.some((cartItem: MenuItem) => cartItem.title === item.title);
-
-    if (itemExists) {
-      // Если такое блюдо уже есть, показываем уведомление
-      setNotification({ message: `${item.title} уже в корзине`, visible: true, type: 'warning' }); // Уведомление желтого цвета
-    } else {
-      const updatedItems = [...storedItems, item]; // Добавляем новый элемент
-      localStorage.setItem('cart', JSON.stringify(updatedItems)); // Обновляем локальное хранилище
-      // Показываем уведомление о добавлении
-      setNotification({ message: `${item.title} добавлено в корзину`, visible: true, type: 'success' }); // Уведомление зеленого цвета
+      setNotification({ message: `${item.title} добавлено в корзину`, visible: true, type: 'success' }); 
+      setTimeout(() => {
+        setNotification(prev => ({ ...prev, visible: false }));
+      }, 3000);
     }
+  };
 
-    // Скрываем уведомление через 3 секунды
+  const removeFromCart = (item: MenuItem) => {
+    const updatedItems = cartItems.filter(cartItem => cartItem.title !== item.title);
+    setCartItems(updatedItems);
+    localStorage.setItem('cart', JSON.stringify(updatedItems));
+
+    setNotification({ message: `${item.title} удалено из корзины`, visible: true, type: 'warning' });
+    setTimeout(() => {
+      setNotification(prev => ({ ...prev, visible: false }));
+    }, 3000);
+  };
+
+  const handleButtonClick = (item: MenuItem) => {
+    if (cartItems.some(cartItem => cartItem.title === item.title)) {
+      // Если блюдо уже в корзине, показываем уведомление
+      setNotification({ message: `${item.title} уже в корзине`, visible: true, type: 'warning' });
+    } else {
+      addToCart(item);
+    }
     setTimeout(() => {
       setNotification(prev => ({ ...prev, visible: false }));
     }, 3000);
@@ -171,11 +190,14 @@ export default function App() {
                     </div>
                     <p className="pb-5 opacity-80 h-[80px] overflow-auto mb-5">{selectedItem.description || 'Описание отсутствует'}</p>
                     <div className="flex flex-row justify-between">
-                    <h2 className="font-bold text-2xl pb-5">₽{selectedItem.price}</h2>
-                      <Button color="success" variant="ghost" onClick={() => addToCart(selectedItem)}>
-                      В корзину
-                    </Button>
-  
+                      <h2 className="font-bold text-2xl pb-5">₽{selectedItem.price}</h2>
+                      <Button 
+                        color="success" 
+                        variant={cartItems.some(cartItem => cartItem.title === selectedItem.title) ? "solid" : "ghost"} 
+                        onClick={() => handleButtonClick(selectedItem)} // Обработчик клика для кнопки
+                      >
+                        {cartItems.some(cartItem => cartItem.title === selectedItem.title) ? "В корзине" : "В корзину"}
+                      </Button>
                     </div>
                   </div>
                 )}

@@ -17,12 +17,12 @@ export const Notify: React.FC<NotifyProps> = ({ message, visible, type }) => {
   if (!visible) return null;
 
   return (
-    <div className="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center z-[5000000]">
+    <div className="fixed top-0 left-0 w-full z-[5000000]">
       <motion.div 
-        className={`${notificationStyles[type]} text-white p-4 rounded-lg shadow-lg text-center w-64`}
-        initial={{ opacity: 0, scale: 0.5 }} // Начальное состояние
-        animate={{ opacity: 1, scale: 1 }} // Конечное состояние
-        exit={{ opacity: 0, scale: 0.5 }} // Состояние выхода
+        className={`${notificationStyles[type]} text-black p-4 rounded-lg shadow-lg text-center`}
+        initial={{ opacity: 0, y: -100 }} // Начальное состояние (уменьшается по оси Y)
+        animate={{ opacity: 1, y: 0 }} // Конечное состояние (позиция по оси Y равна 0)
+        exit={{ opacity: 0, y: -100 }} // Состояние выхода (уменьшается по оси Y)
         transition={{ duration: 0.3 }} // Длительность анимации
       >
         {message}
