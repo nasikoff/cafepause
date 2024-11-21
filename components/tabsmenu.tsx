@@ -42,10 +42,14 @@ export default function App() {
   const [selectedItem, setSelectedItem] = useState<MenuItem | null>(null);
   const [notification, setNotification] = useState<Notification>({ message: '', visible: false, type: 'success' });
 
-  const [cartItems, setCartItems] = useState<MenuItem[]>(() => {
-    const storedCart = localStorage.getItem('cart');
-    return storedCart ? JSON.parse(storedCart) : [];
-  });
+  const [cartItems, setCartItems] = useState<MenuItem[]>([]);
+
+  useEffect(() => {
+      const storedCart = localStorage.getItem('cart');
+      if (storedCart) {
+          setCartItems(JSON.parse(storedCart));
+      }
+  }, []);
 
   const filteredMenu = categories.map((category) => {
     const items = (category === 'Все' ? menupause : menupause.filter(item => item.categories === category)).filter(item =>
@@ -102,28 +106,16 @@ export default function App() {
 
   const addToCart = (item: MenuItem) => {
     if (!cartItems.some(cartItem => cartItem.title === item.title)) {
-      const updatedItems = [...cartItems, item];
-      setCartItems(updatedItems);
-      localStorage.setItem('cart', JSON.stringify(updatedItems));
-
-      setNotification({ message: `${item.title} добавлено в корзину`, visible: true, type: 'success' }); 
-      setTimeout(() => {
-        setNotification(prev => ({ ...prev, visible: false }));
-      }, 3000);
+        const updatedItems = [...cartItems, item];
+        setCartItems(updatedItems);
+        localStorage.setItem('cart', JSON.stringify(updatedItems));
+        setNotification({ message: `${item.title} добавлено в корзину`, visible: true, type: 'success' }); 
+        setTimeout(() => {
+            setNotification(prev => ({ ...prev, visible: false }));
+        }, 3000);
     }
-  };
-
-  const removeFromCart = (item: MenuItem) => {
-    const updatedItems = cartItems.filter(cartItem => cartItem.title !== item.title);
-    setCartItems(updatedItems);
-    localStorage.setItem('cart', JSON.stringify(updatedItems));
-
-    setNotification({ message: `${item.title} удалено из корзины`, visible: true, type: 'warning' });
-    setTimeout(() => {
-      setNotification(prev => ({ ...prev, visible: false }));
-    }, 3000);
-  };
-
+};
+ 
   const handleButtonClick = (item: MenuItem) => {
     if (cartItems.some(cartItem => cartItem.title === item.title)) {
       // Если блюдо уже в корзине, показываем уведомление
