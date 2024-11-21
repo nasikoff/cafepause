@@ -182,7 +182,7 @@ export default function App() {
                     </div>
                     <p className="pb-5 opacity-80 h-[80px] overflow-auto mb-5">{selectedItem.description || 'Описание отсутствует'}</p>
                     <div className="flex flex-row justify-between">
-                      <h2 className="font-bold text-2xl pb-5">₽{selectedItem.price}</h2>
+                      <h2 className="font-bold text-2xl pb-7">₽{selectedItem.price}</h2>
                       <Button 
                         color="success" 
                         variant={cartItems.some(cartItem => cartItem.title === selectedItem.title) ? "solid" : "ghost"} 

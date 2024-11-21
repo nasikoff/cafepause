@@ -27,7 +27,7 @@ export default function Cart() {
     if (storedItems) {
       setCartItems(JSON.parse(storedItems));
     }
-    setIsLoading(false); // Загрузка завершена
+    setIsLoading(false);
   }, []);
 
   const removeItem = (index: number) => {
@@ -56,7 +56,7 @@ export default function Cart() {
   return (
     <div className="flex flex-col gap-3">
       {isLoading ? (
-        <p className="text-center">😊 Смотрим корзину</p> // Состояние загрузки
+        <p className="text-center">😊 Смотрим корзину</p>
       ) : cartItems.length > 0 ? (
         <>
           {cartItems.map((cartItem, index) => (
