@@ -7,18 +7,19 @@ import { useRouter } from 'next/navigation';
 interface MenuItem {
   title: string;
   img: string;
-  svg?: string; // Убедитесь, что это строка, например, для иконки
+  svg?: string; 
   timer: string;
   calories: string;
-  price: number | string; // price может быть числом или строкой
+  price: number | string;
 }
 
 export default function Cart() {
   const [cartItems, setCartItems] = useState<MenuItem[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
 
   const handleClick = () => {
-    router.push('/'); // Переход на главную страницу
+    router.push('/');
   };
 
   useEffect(() => {
@@ -26,36 +27,37 @@ export default function Cart() {
     if (storedItems) {
       setCartItems(JSON.parse(storedItems));
     }
+    setIsLoading(false); // Загрузка завершена
   }, []);
 
   const removeItem = (index: number) => {
-    const updatedItems = cartItems.filter((_, i) => i !== index); // Удаляем элемент по индексу
+    const updatedItems = cartItems.filter((_, i) => i !== index);
     setCartItems(updatedItems);
-    localStorage.setItem('cart', JSON.stringify(updatedItems)); // Обновляем локальное хранилище
+    localStorage.setItem('cart', JSON.stringify(updatedItems));
   };
 
-  // Функция для подсчета общей стоимости
   const calculateTotalCost = () => {
     return cartItems.reduce((total, cartItem) => {
-      // Преобразуем цену к числу, если цена приходит как строка
       let price: number;
       if (typeof cartItem.price === 'number') {
         price = cartItem.price;
       } else if (typeof cartItem.price === 'string') {
-        price = parseFloat(cartItem.price.replace(/[^\d.-]/g, '')); // Убираем все, кроме чисел и знаков
+        price = parseFloat(cartItem.price.replace(/[^\d.-]/g, ''));
       } else {
-        price = 0; // На всякий случай, если цена не определена
+        price = 0;
       }
       return total + price;
     }, 0);
   };
 
-  const totalCost = calculateTotalCost(); // Считаем общую стоимость
-  const itemCount = cartItems.length; // Считаем количество наименований
+  const totalCost = calculateTotalCost();
+  const itemCount = cartItems.length;
 
   return (
     <div className="flex flex-col gap-3">
-      {cartItems.length > 0 ? (
+      {isLoading ? (
+        <p className="text-center">😊 Смотрим корзину</p> // Состояние загрузки
+      ) : cartItems.length > 0 ? (
         <>
           {cartItems.map((cartItem, index) => (
             <Card key={index}>
