@@ -15,4 +15,4 @@ const withPWA = require('next-pwa')({
     // Ваши другие настройки Next.js
   };
   
-  module.exports = withPWA(nextConfig);
+  module.exports = withPWA(nextConfig); 
