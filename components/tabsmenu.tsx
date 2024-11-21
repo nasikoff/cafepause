@@ -62,7 +62,7 @@ export default function App() {
       content: (
         <div className="gap-5 flex flex-wrap p-0 py-3">
           {items.length === 0 ? (
-            <p>😯 Блюда не найдены</p>
+            <p>😯 Такого у нас нет в меню</p>
           ) : (
             items.map((item, index) => {
               return (
@@ -132,10 +132,10 @@ export default function App() {
     <>
       <Input
         classNames={{
-          base: "max-w-full sm:max-w-[20rem] h-10 sticky top-[60px] z-50",
+          base: "max-w-full sm:max-w-[20rem] h-10 sticky top-[60px] z-50  rounded-full",
           mainWrapper: "h-full",
           input: "text-small",
-          inputWrapper: "h-full font-normal text-default-500 backdrop-blur-lg bg-background/70 ",
+          inputWrapper: "h-full font-normal text-default-500 backdrop-blur-lg bg-background/70  rounded-full",
         }}
         style={{ fontSize: '16px' }}
         placeholder="Поиск блюд"

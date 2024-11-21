@@ -2,7 +2,7 @@ export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
   name: "Кафе || Пауза",
-  description: "Make beautiful websites regardless of your design experience.",
+  description: "Ваше любимое кафе с атмосферой и вкусной едой.",
   navItems: [
     {
       label: "Главная",

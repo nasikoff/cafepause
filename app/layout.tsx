@@ -6,7 +6,6 @@ import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
 import { Navbar } from "@/components/navbar";
 import { Menu } from "@/components/menu";
-import { Head } from "next/document";
 
 export const metadata: Metadata = {
   title: {
@@ -34,9 +33,12 @@ export default function RootLayout({
 }) {
   return (
     <html suppressHydrationWarning lang="ru">
-      
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="icon" href="/icons/apple-touch-icon.png" sizes="192x192" />
+        <link rel="icon" href="/icons/apple-touch-icon.png" sizes="512x512" />
+        <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" sizes="180x180" />
       </head>
       <body
         className={clsx(
@@ -51,7 +53,7 @@ export default function RootLayout({
               {children}
             </main>
             <footer className="w-full flex items-center justify-center py-3 fixed bottom-2 z-50">
-              <Menu/>
+              <Menu />
             </footer>
           </div>
         </Providers>

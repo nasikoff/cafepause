@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 export const Menu = () => {
   const pathUrl = usePathname();
     return (
-      <div className="w-full backdrop-blur-lg bg-background/70 ssm:w-[400px] items-center justify-evenly flex justify-start mx-4 py-2 outline-none  outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none ">
+      <div className="w-full backdrop-blur-lg bg-background/70 ssm:w-[400px] items-center justify-evenly flex justify-start mx-4 py-2 outline-none  outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-full transition-transform-background motion-reduce:transition-none ">
         <ul className="w-full flex gap-4 justify-start">
           {siteConfig.navItems.map((item, index) => (
               
@@ -21,7 +21,7 @@ export const Menu = () => {
                 key={index}
                 >
               <NextLink
-                 className={`w-full ${pathUrl === item.href ? "text-[#17c964] font-light" : "opacity-70 font-extralight"}`}  href={item.href}           >
+                 className={`w-full ${pathUrl === item.href ? "text-[#17c964] text-sm md:text-base font-normal" : "opacity-80  md:text-base  text-sm font-normal"}`}  href={item.href}           >
                 <li className="text-center">
                 <div>{item.svg}{item.label}</div>            
             </li>
