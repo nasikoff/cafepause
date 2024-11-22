@@ -21,7 +21,7 @@ export const Menu = () => {
                 key={index}
                 >
               <NextLink
-                 className={`w-full ${pathUrl === item.href ? "text-sm md:text-base font-normal" : "opacity-60 md:text-base  text-sm font-normal"}`}  href={item.href}           >
+                 className={`w-full ${pathUrl === item.href ? "text-sm md:text-base font-normal" : "text-default-500  md:text-base  text-sm font-normal"}`}  href={item.href}           >
                 <li className="text-center">
                 <div>{item.svg}{item.label}</div>            
             </li>
