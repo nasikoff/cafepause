@@ -14,9 +14,9 @@ export const Navbar = () => {
  
 
   return (
-    <NextUINavbar maxWidth="xl" className="fixed top-0">
-      <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
-        <NavbarBrand as="li" className="gap-3 max-w-fit">
+    <NextUINavbar maxWidth="xl" className="fixed top-0 !px-0">
+      <NavbarContent className="basis-1/5 sm:basis-full !px-0" justify="start">
+        <NavbarBrand as="li" className="gap-3 !px-0 max-w-fit">
           <NextLink className="flex justify-start items-center gap-1" href="/">
             <LogoPause />
             
