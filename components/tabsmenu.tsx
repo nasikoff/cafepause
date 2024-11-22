@@ -17,6 +17,7 @@ import {
 import { useEffect, useState } from "react";
 import { Calories, SearchIcon, Timer } from "./icons";
 import { Notify } from "@/components/notify";
+import { ScrollShadow } from "@nextui-org/react";
 
 interface MenuItem {
   calories: string;
@@ -36,7 +37,7 @@ interface Notification {
 }
 
 export default function App() {
-  const categories = ['Все', 'Завтраки', 'Обед'];
+  const categories = ['Все', 'Завтраки', 'Кофе' , 'Холодные напитки'];
   const [searchTerm, setSearchTerm] = useState('');
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [selectedItem, setSelectedItem] = useState<MenuItem | null>(null);
@@ -60,7 +61,7 @@ export default function App() {
       id: category,
       label: category,
       content: (
-        <div className="gap-5 flex flex-wrap p-0 py-3">
+        <div className="gap-5 flex flex-wrap p-0 py-0">
           {items.length === 0 ? (
             <p>😯 Такого у нас нет в меню</p>
           ) : (
@@ -149,13 +150,23 @@ export default function App() {
       <Notify message={notification.message} visible={notification.visible} type={notification.type} />
 
       <div className="flex w-full flex-col bg-transparent p-0">
-        <Tabs aria-label="Dynamic tabs" color="success" items={filteredMenu} variant="bordered">
-          {(item) => (
-            <Tab key={item.id} title={item.label} className="bg-transparent">
-              {item.content}
-            </Tab>
-          )}
+     
+     
+     
+      <Tabs className="py-1" aria-label="Dynamic tabs" color="success" items={filteredMenu} variant="light">
+          
+         {filteredMenu.map((item) => (
+           <Tab key={item.id} 
+                title={item.label} 
+                className="bg-transparent">
+             {item.content}
+           </Tab>
+         ))}
+        
         </Tabs>
+     
+       
+       
 
         <Modal size={"xl"} isOpen={isOpen} onOpenChange={onOpenChange}>
           <ModalContent>
