@@ -8,7 +8,7 @@ import { Kbd } from "@nextui-org/kbd";
 import { Input } from "@nextui-org/input";
 import NextLink from "next/link";
 import { ThemeSwitch } from "@/components/theme-switch";
-import { SearchIcon, Logo } from "@/components/icons";
+import { SearchIcon, Logo, LogoPause } from "@/components/icons";
 
 export const Navbar = () => {
  
@@ -18,8 +18,8 @@ export const Navbar = () => {
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
           <NextLink className="flex justify-start items-center gap-1" href="/">
-            <Logo />
-            <p className="font-light text-inherit">CAFE PAUSE </p>
+            <LogoPause />
+            
           </NextLink>
         </NavbarBrand>
       </NavbarContent>

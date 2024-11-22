@@ -16,7 +16,7 @@ export default function Home() {
       <div className="inline-block max-w-xl text-left">
         <span className={title()}>Добро пожаловать в&nbsp;</span>
         <br />
-        <span className={title({ color: "green" })}>pa||se&nbsp;</span>
+        <span className={title({ color: "green" })}>pa❘❘se&nbsp;</span>
 
         <h2 className="pt-4 text-sm lg:text-xl font-normal text-default-500 block max-w-full   text-left md:text-left">Отвлекись на небольшую паузу в нашем кафе</h2>
       </div>

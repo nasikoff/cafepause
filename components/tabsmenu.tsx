@@ -56,6 +56,7 @@ export default function App() {
     const items = (category === 'Все' ? menupause : menupause.filter(item => item.categories === category)).filter(item =>
       item.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
+  
 
     return {
       id: category,
@@ -153,13 +154,14 @@ export default function App() {
      
      
      
-      <Tabs className="py-1" aria-label="Dynamic tabs" color="success" items={filteredMenu} variant="light">
+      <Tabs className="py-1" aria-label="Dynamic tabs" color="success"  variant="light">
           
          {filteredMenu.map((item) => (
            <Tab key={item.id} 
                 title={item.label} 
-                className="bg-transparent">
+                className="bg-transparent ">
              {item.content}
+             
            </Tab>
          ))}
         
