@@ -107,15 +107,14 @@ export default function App() {
   };
 
   const addToCart = (item: MenuItem) => {
-    if (!cartItems.some(cartItem => cartItem.title === item.title)) {
-        const updatedItems = [...cartItems, item];
-        setCartItems(updatedItems);
-        localStorage.setItem('cart', JSON.stringify(updatedItems));
-        setNotification({ message: `${item.title} добавлено в корзину`, visible: true, type: 'success' }); 
-        setTimeout(() => {
-            setNotification(prev => ({ ...prev, visible: false }));
-        }, 3000);
-    }
+    const newItem = { ...item, quantity: 1 }; // Устанавливаем количество в 1 при добавлении
+    const updatedItems = [...cartItems, newItem];
+    setCartItems(updatedItems);
+    localStorage.setItem('cart', JSON.stringify(updatedItems));
+    setNotification({ message: `${item.title} добавлено в корзину`, visible: true, type: 'success' });
+    setTimeout(() => {
+        setNotification(prev => ({ ...prev, visible: false }));
+    }, 3000);
 };
  
   const handleButtonClick = (item: MenuItem) => {

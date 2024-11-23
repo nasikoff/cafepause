@@ -57,7 +57,7 @@ export const DeleteIcon: React.FC<IconSvgProps> = ({
 );
 
 export const CartPlusIcon: React.FC<IconSvgProps> = ({
-  size = 128,
+  size = 80,
   width,
   height,
   ...props
@@ -69,10 +69,12 @@ export const CartPlusIcon: React.FC<IconSvgProps> = ({
     width={size || width}
     {...props}
   >
-<path fill="currentColor" d="M11 6H9q-.425 0-.712-.288T8 5t.288-.712T9 4h2V2q0-.425.288-.712T12 1t.713.288T13 2v2h2q.425 0 .713.288T16 5t-.288.713T15 6h-2v2q0 .425-.288.713T12 9t-.712-.288T11 8zM7 22q-.825 0-1.412-.587T5 20t.588-1.412T7 18t1.413.588T9 20t-.587 1.413T7 22m10 0q-.825 0-1.412-.587T15 20t.588-1.412T17 18t1.413.588T19 20t-.587 1.413T17 22M3 4H2q-.425 0-.712-.288T1 3t.288-.712T2 2h1.65q.275 0 .525.15t.375.425L8.525 11h7l3.625-6.5q.125-.25.35-.375T20 4q.575 0 .863.488t.012.987L17.3 11.95q-.275.5-.737.775T15.55 13H8.1L7 15h11q.425 0 .713.288T19 16t-.288.713T18 17H7q-1.125 0-1.713-.975T5.25 14.05L6.6 11.6z"/>
+<path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13 21h-2.068c-2.75 0-4.126 0-5.08-.76c-1.301-1.046-1.39-3.167-1.651-4.652l-.593-3.375a1.93 1.93 0 0 0-1.09-1.4a.48.48 0 0 1-.27-.335c-.17-.807-.622-1.931.39-2.377C2.867 8 3.18 8 3.804 8H7.5m4 0h8.696c.625 0 .937 0 1.166.1c1.012.447.56 1.57.39 2.378a.48.48 0 0 1-.27.335a2 2 0 0 0-.802.687m-5.68 6h7M18.5 21v-7m-12-3L10 3m5 0l2.5 5" color="currentColor"/>
   </svg>
 );
 
+
+ 
 
 
 
