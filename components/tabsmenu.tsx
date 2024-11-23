@@ -151,9 +151,7 @@ export default function App() {
 
       <div className="flex w-full flex-col bg-transparent p-0">
      
-     
-     
-      <Tabs className="py-1" aria-label="Dynamic tabs" color="success"  variant="light">
+      <Tabs className="py-1" radius="full" aria-label="Dynamic tabs" color="success"  variant="light">
           
          {filteredMenu.map((item) => (
            <Tab key={item.id} 
@@ -166,8 +164,6 @@ export default function App() {
         
         </Tabs>
      
-       
-       
 
         <Modal size={"xl"} isOpen={isOpen} onOpenChange={onOpenChange}>
           <ModalContent>
