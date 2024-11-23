@@ -37,7 +37,7 @@ interface Notification {
 }
 
 export default function App() {
-  const categories = ['Все', 'Завтраки', 'Кофе' , 'Холодные напитки'];
+  const categories = ['Все', 'Завтраки', 'Салаты', 'Кофе' , 'Холодные напитки'];
   const [searchTerm, setSearchTerm] = useState('');
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [selectedItem, setSelectedItem] = useState<MenuItem | null>(null);
