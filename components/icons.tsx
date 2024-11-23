@@ -56,6 +56,64 @@ export const DeleteIcon: React.FC<IconSvgProps> = ({
   </svg>
 );
 
+
+
+
+export const RestaurantIcon: React.FC<IconSvgProps> = ({
+  size = 24,
+  width,
+  height,
+  ...props
+}) => (
+  <svg
+    fill="none"
+    height={size || height}
+    viewBox="0 0 64 64"
+    width={size || width}
+    {...props}
+  >
+   <path fill="currentColor" d="M45.9 37.4h-5c-2 0-3.6 1.6-3.6 3.6v5c0 2 1.6 3.6 3.6 3.6h5c2 0 3.6-1.6 3.6-3.6v-5c0-2-1.6-3.6-3.6-3.6M45 45h-3.1v-3.1H45z"/><path fill="currentColor" d="M59.7 20.6v-1.2c0-.4-.1-.8-.3-1.1L51.8 4.9c-1.1-1.9-3.1-3.1-5.3-3.1h-29c-2.2 0-4.2 1.2-5.3 3.1L4.6 18.3v.1c0 .1-.1.2-.1.3c-.1.2-.2.5-.2.8v36.8c0 3.4 2.7 6.1 6.1 6.1h43.1c3.4 0 6.1-2.7 6.1-6.1zm-30.1 1c-.4 1.8-2.1 3.1-4 3.1s-3.5-1.3-4-3.1zM16.1 7.1c.3-.5.8-.8 1.4-.8h29c.6 0 1.1.3 1.4.8l5.6 10h-43zM55 21.6c-.4 1.8-2 3.1-4 3.1c-1.9 0-3.5-1.3-4-3.1zm-12.7 0c-.4 1.8-2 3.1-4 3.1s-3.5-1.3-4-3.1zm-25.4 0c-.4 1.8-2 3.1-4 3.1c-1.9 0-3.5-1.3-4-3.1zM19 57.8V42.3c0-.2.2-.4.4-.4h4.8c.2 0 .4.2.4.4v15.4H19zm34.6 0H29.2V42.3c0-2.7-2.2-4.9-4.9-4.9h-4.8c-2.7 0-4.9 2.2-4.9 4.9v15.4h-4.1c-.9 0-1.6-.7-1.6-1.6v-28c1.2.7 2.6 1 4.1 1c2.5 0 4.8-1.1 6.4-2.8c1.6 1.7 3.8 2.8 6.4 2.8c2.5 0 4.8-1.1 6.4-2.8c1.6 1.7 3.8 2.8 6.4 2.8c2.5 0 4.8-1.1 6.4-2.8c1.6 1.7 3.8 2.8 6.4 2.8c1.5 0 2.9-.4 4.1-1v28c-.3.9-1.1 1.7-1.9 1.7"/>
+  </svg>
+);
+
+
+export const DeliverytIcon: React.FC<IconSvgProps> = ({
+  size = 24,
+  width,
+  height,
+  ...props
+}) => (
+  <svg
+    fill="none"
+    height={size || height}
+    viewBox="0 0 24 24"
+    width={size || width}
+    {...props}
+  >
+  <path fill="currentColor" d="M19 7c0-1.1-.9-2-2-2h-2c-.55 0-1 .45-1 1s.45 1 1 1h2v2.65L13.52 14H10v-4c0-.55-.45-1-1-1H6c-2.21 0-4 1.79-4 4v2c0 .55.45 1 1 1h1c0 1.66 1.34 3 3 3s3-1.34 3-3h3.52c.61 0 1.18-.28 1.56-.75l3.48-4.35c.29-.36.44-.8.44-1.25zM7 17c-.55 0-1-.45-1-1h2c0 .55-.45 1-1 1"/><path fill="currentColor" d="M6 6h3c.55 0 1 .45 1 1s-.45 1-1 1H6c-.55 0-1-.45-1-1s.45-1 1-1m13 7c-1.66 0-3 1.34-3 3s1.34 3 3 3s3-1.34 3-3s-1.34-3-3-3m0 4c-.55 0-1-.45-1-1s.45-1 1-1s1 .45 1 1s-.45 1-1 1"/>
+  </svg>
+);
+
+export const OrderplustIcon: React.FC<IconSvgProps> = ({
+  size = 24,
+  width,
+  height,
+  ...props
+}) => (
+  <svg
+    fill="none"
+    height={size || height}
+    viewBox="0 0 24 24"
+    width={size || width}
+    {...props}
+  >
+<path fill="currentColor" d="m16.75 20.5l4-2.5l-4-2.5zM6 9h12V7H6zm12 14q-2.075 0-3.537-1.463T13 18t1.463-3.537T18 13t3.538 1.463T23 18t-1.463 3.538T18 23M3 22V5q0-.825.588-1.412T5 3h14q.825 0 1.413.588T21 5v6.675q-.7-.35-1.463-.513T18 11H6v2h7.1q-.425.425-.787.925T11.675 15H6v2h5.075q-.05.25-.062.488T11 18q0 1.05.288 2.013t.862 1.837L12 22l-1.5-1.5L9 22l-1.5-1.5L6 22l-1.5-1.5z"/>
+  </svg>
+);
+
+ 
+ 
+
 export const CartPlusIcon: React.FC<IconSvgProps> = ({
   size = 80,
   width,
