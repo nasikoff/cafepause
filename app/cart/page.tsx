@@ -85,36 +85,64 @@ export default function Cart() {
   const totalCost = calculateTotalCost();
   const itemCount = cartItems.length;
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault(); // Prevent default form submission
-  
-    // Сбросить состояние ошибок
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault(); // Предотвращаем стандартную отправку формы
+
+    // Сброс состояния ошибок
     setIsNameInvalid(false);
     setIsPhoneInvalid(false);
     setIsAddressInvalid(false);
-    setIsPaymentMethodInvalid(false); // Сброс валидации радио-кнопок
-  
+    setIsPaymentMethodInvalid(false);
+
     // Проверка заполненности полей
     const isNameEmpty = name.trim() === '';
     const isPhoneEmpty = phone.trim() === '';
     const isAddressEmpty = activeTab === 'delivery' && address.trim() === '';
-    const isPaymentMethodEmpty = activeTab === 'delivery' && paymentMethod.trim() === ''; // Проверка выбора способа оплаты
-  
+    const isPaymentMethodEmpty = activeTab === 'delivery' && paymentMethod.trim() === '';
+
     // Установить состояние ошибок
     setIsNameInvalid(isNameEmpty);
     setIsPhoneInvalid(isPhoneEmpty);
     setIsAddressInvalid(isAddressEmpty);
-    setIsPaymentMethodInvalid(isPaymentMethodEmpty); // Установить состояние валидации
-  
+    setIsPaymentMethodInvalid(isPaymentMethodEmpty);
+
     // Если есть ошибки, прервать отправку
     if (isNameEmpty || isPhoneEmpty || (activeTab === 'delivery' && (isAddressEmpty || isPaymentMethodEmpty))) {
-      console.log('Form submission blocked due to validation errors');
-      return;
+        console.log('Форма не отправлена из-за ошибок валидации');
+        return;
     }
-  
-    // Добавьте здесь логику отправки формы (например, отправка на бэкэнд)
-    console.log('Form submitted:', { name, phone, address, comment, pickupComment, paymentMethod });
-  };
+
+    // Отправка данных на сервер
+    try {
+        const response = await fetch('http://localhost:3001/api/send-order', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                name,
+                phone,
+                address,
+                comment,
+                pickupComment,
+                paymentMethod,
+            }),
+        });
+
+        if (response.ok) {
+            // Обработка успешного заказа
+            console.log('Заказ успешно отправлен');
+            clearCart(); // Очистка корзины после успешной отправки
+            alert('Ваш заказ успешно отправлен!'); // Уведомление пользователя
+        } else {
+            console.error('Ошибка при отправке заказа:', response.statusText);
+            alert('Ошибка при отправке заказа. Попробуйте еще раз.');
+        }
+    } catch (error) {
+        console.error('Ошибка при отправке заказа:', error);
+        alert('При отправке заказа произошла ошибка. Проверьте подключение к интернету и попробуйте еще раз.');
+    }
+};
   return (
     <div className="flex flex-col gap-3">
       {isLoading ? (
