@@ -114,7 +114,7 @@ export default function Cart() {
 
     // Отправка данных на сервер
     try {
-        const response = await fetch('http://localhost:3001/api/send-order', {
+        const response = await fetch('https://cafepause.vercel.app/api/send-order', {  // Изменен URL на ваш развернутый API
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
