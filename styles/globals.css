@@ -7,3 +7,24 @@ header{
     padding-left: 8px !important;
     padding-right: 8px !important;
 }
+
+::-webkit-scrollbar {
+    width: 10px; 
+    height: 10px; 
+}
+ 
+::-webkit-scrollbar-track {
+    background: transparent; 
+    border-radius: 10px; 
+}
+ 
+::-webkit-scrollbar-thumb {
+    background: #17c964b8; 
+    border-radius: 10px; 
+    transition: background-color 0.3s ease;
+}
+ 
+::-webkit-scrollbar-thumb:hover {
+    background: #17c964; 
+  
+}

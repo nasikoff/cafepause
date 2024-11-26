@@ -303,9 +303,6 @@ export default function Cart() {
                 <Radio value="transfer" isInvalid={isPaymentMethodInvalid && paymentMethod === ''}>
                   Переводом на карту
                 </Radio>
-                <Radio value="ooo" isInvalid={isPaymentMethodInvalid && paymentMethod === ''}>
-                  Я тебе ох***нно сделаю
-                </Radio>
                 </RadioGroup>
               {isPaymentMethodInvalid && (
                 <p className="text-[#f31260]">Пожалуйста, выберите способ оплаты.</p>

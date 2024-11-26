@@ -75,7 +75,7 @@ export default function App() {
                   className="!p-0 w-full ssm:w-[180px] flex-row ssm:flex-col"
                   onPress={() => handleCardPress(item as unknown as MenuItem)}
                 >
-                  <CardBody className="overflow-visible p-0">
+                  <CardBody className="overflow-visible p-0 basis-2/5">
                     <Image
                       width="100%"
                       alt={item.title}
@@ -83,11 +83,11 @@ export default function App() {
                       src={item.img}
                     />
                   </CardBody>
-                  <CardFooter className="text-small text-left">
+                  <CardFooter className="text-small text-left basis-3/5">
                     <div className="flex flex-col pb-1">
                       <h1 className="font-bold pb-1">{item.title}</h1>
-                      <h2 className="flex gap-1 pb-3 items-center font-extralight">
-                        {item.svg}{item.timer} | {item.calories}
+                      <h2 className="flex gap-1 pb-3 items-center font-extralight text-default-500">
+                        {item.svg}{item.timer} | {item.svgC}{item.calories}
                       </h2>
                       <h2 className="font-bold text-base absolute bottom-3 ssm:bottom-auto ssm:relative ">₽{item.price}</h2>                  
                     </div>
@@ -181,10 +181,10 @@ export default function App() {
                     </div>
                     <div className="flex flex-row pb-5 ">
                       <div className="basis-1/2 justify-center flex">
-                        <p className="flex items-center gap-1 text-2xl font-bold"><Timer height={28} />{selectedItem.timer}</p>
+                        <p className="flex items-center gap-1 text-2xl font-bold"><Timer height={28} /> {selectedItem.timer}</p>
                       </div>
                       <div className="basis-1/2 justify-center flex">
-                        <p className="flex items-center gap-1 text-2xl font-bold"><Calories height={28} />{selectedItem.calories}</p>
+                        <p className="flex items-center gap-1 text-2xl font-bold"><Calories height={28} /> {selectedItem.calories}</p>
                       </div>
                     </div>
                     <p className="pb-5 opacity-80 h-[80px] overflow-auto mb-5">{selectedItem.description || 'Описание отсутствует'}</p>
