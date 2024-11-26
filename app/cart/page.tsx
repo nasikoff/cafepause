@@ -112,9 +112,20 @@ export default function Cart() {
         return;
     }
 
+    // Формируем список выбранных блюд
+    const items = cartItems.map(item => {
+        const price = typeof item.price === 'string' ? parseFloat(item.price.replace(/[^\d.-]/g, '')) : item.price;
+        const totalItemPrice = price * item.quantity; // Считаем общую цену для позиции
+        return `
+            <li>
+                <strong>${item.title}</strong> - ₽${price} x ${item.quantity} = ₽${totalItemPrice.toFixed(0)}
+            </li>
+        `;
+    }).join('');
+
     // Отправка данных на сервер
     try {
-        const response = await fetch('https://cafepause.vercel.app/api/send-order', {  // Изменен URL на ваш развернутый API
+        const response = await fetch('https://cafepause.vercel.app/api/send-order', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -126,6 +137,7 @@ export default function Cart() {
                 comment,
                 pickupComment,
                 paymentMethod,
+                items // передаем список блюд
             }),
         });
 
@@ -143,6 +155,8 @@ export default function Cart() {
         alert('При отправке заказа произошла ошибка. Проверьте подключение к интернету и попробуйте еще раз.');
     }
 };
+
+
   return (
     <div className="flex flex-col gap-3">
       {isLoading ? (

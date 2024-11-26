@@ -42,31 +42,37 @@ const transporter = nodemailer.createTransport({
 
 // Обработка POST-запроса для отправки заказа
 app.post('/api/send-order', (req: Request, res: Response) => {
-    const { name, phone, address, comment, pickupComment, paymentMethod } = req.body;
+  const { name, phone, address, comment, pickupComment, paymentMethod, items } = req.body;
 
-    const mailOptions = {
-        from: process.env.MAIL_USER,
-        to: 'wooddooff@mail.ru',
-        subject: 'Новый заказ',
-        text: `
-      Имя: ${name}
-      Телефон: ${phone}
-      Адрес: ${address}
-      Комментарий: ${comment}
-      Способ самовывоза: ${pickupComment}
-      Способ оплаты: ${paymentMethod}
-    `,
-    };
+  const mailOptions = {
+      from: process.env.MAIL_USER,
+      to: 'wooddooff@mail.ru',
+      subject: 'Новый заказ',
+      html: `
+          <h2>Новый заказ</h2>
+          <p><strong>Имя:</strong> ${name}</p>
+          <p><strong>Телефон:</strong> ${phone}</p>
+          <p><strong>Адрес:</strong> ${address}</p>
+          <p><strong>Комментарий:</strong> ${comment}</p>
+          <p><strong>Способ самовывоза:</strong> ${pickupComment}</p>
+          <p><strong>Способ оплаты:</strong> ${paymentMethod}</p>
+          <h3>Заказанные блюда:</h3>
+          <ul>
+              ${items} <!-- Вставляем список блюд -->
+          </ul>
+      `,
+  };
 
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            console.error('Error sending email:', error);
-            return res.status(500).json({ error: error.message });
-        }
-        console.log('Email sent: ' + info.response);
-        res.status(200).json({ message: 'Email sent: ' + info.response });
-    });
+  transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+          console.error('Error sending email:', error);
+          return res.status(500).json({ error: error.message });
+      }
+      console.log('Email sent: ' + info.response);
+      res.status(200).json({ message: 'Email sent: ' + info.response });
+  });
 });
+
 
 // Запуск сервера
 app.listen(port, () => {
