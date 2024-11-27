@@ -54,11 +54,11 @@ app.post('/api/send-order', (req: Request, res: Response) => {
           <p><strong>Телефон:</strong> ${phone}</p>
           <p><strong>Адрес:</strong> ${address}</p>
           <p><strong>Комментарий:</strong> ${comment}</p>
-          <p><strong>Способ самовывоза:</strong> ${pickupComment}</p>
+          <p><strong>Способ получения:</strong> ${pickupComment || 'Доставка'}</p> <!-- Используем PickupComment и добавляем условие для доставки -->
           <p><strong>Способ оплаты:</strong> ${paymentMethod}</p>
           <h3>Заказанные блюда:</h3>
           <ul>
-              ${items} <!-- Вставляем список блюд -->
+              ${items}
           </ul>
       `,
   };

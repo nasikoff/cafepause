@@ -123,8 +123,8 @@ export default function Cart() {
         `;
     }).join('');
 
-    // Убедитесь, что comment и pickupComment правильно заполнены
-    const commentToSend = activeTab === 'pickup' ? pickupComment : comment; // Используйте pickupComment, если самовывоз, иначе comment
+    // Определяем способ получения
+    const pickupMethod = activeTab === 'pickup' ? pickupComment : ''; // Если самовывоз, используем pickupComment, иначе оставляем пустым
 
     // Отправка данных на сервер
     try {
@@ -137,8 +137,8 @@ export default function Cart() {
                 name,
                 phone,
                 address,
-                comment: commentToSend, // Передаем правильный комментарий
-                pickupComment,
+                comment, // Comment для любых общих комментариев
+                pickupComment: pickupMethod, // Передаем способ получения
                 paymentMethod,
                 items // передаем список блюд
             }),
