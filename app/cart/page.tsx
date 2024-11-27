@@ -123,6 +123,9 @@ export default function Cart() {
         `;
     }).join('');
 
+    // Убедитесь, что comment и pickupComment правильно заполнены
+    const commentToSend = activeTab === 'pickup' ? pickupComment : comment; // Используйте pickupComment, если самовывоз, иначе comment
+
     // Отправка данных на сервер
     try {
         const response = await fetch('https://cafepause.vercel.app/api/send-order', {
@@ -134,7 +137,7 @@ export default function Cart() {
                 name,
                 phone,
                 address,
-                comment,
+                comment: commentToSend, // Передаем правильный комментарий
                 pickupComment,
                 paymentMethod,
                 items // передаем список блюд
@@ -155,6 +158,7 @@ export default function Cart() {
         alert('При отправке заказа произошла ошибка. Проверьте подключение к интернету и попробуйте еще раз.');
     }
 };
+
 
 
   return (
