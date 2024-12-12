@@ -21,13 +21,13 @@ export default function Cart() {
   const [phone, setPhone] = useState('');
   const [address, setAddress] = useState('');
   const [comment, setComment] = useState('');
-  const [pickupComment, setPickupComment] = useState(''); // Комментарий для самовывоза
+  const [pickupComment, setPickupComment] = useState('');
   const [activeTab, setActiveTab] = useState<string>('pickup');
-  const [paymentMethod, setPaymentMethod] = useState<string>(''); // Чтобы сохранить выбранный способ оплаты
+  const [paymentMethod, setPaymentMethod] = useState<string>('');
   const [isNameInvalid, setIsNameInvalid] = useState(false);
   const [isPhoneInvalid, setIsPhoneInvalid] = useState(false);
   const [isAddressInvalid, setIsAddressInvalid] = useState(false);
-  const [isPaymentMethodInvalid, setIsPaymentMethodInvalid] = useState(false); // Для валидации радио-кнопок
+  const [isPaymentMethodInvalid, setIsPaymentMethodInvalid] = useState(false);
   const router = useRouter();
 
   const handleClick = () => {
@@ -82,84 +82,80 @@ export default function Cart() {
     }, 0);
   };
 
-  const totalCost = calculateTotalCost();
-  const itemCount = cartItems.length;
-
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault(); // Предотвращаем стандартную отправку формы
+    e.preventDefault();
 
-    // Сброс состояния ошибок
     setIsNameInvalid(false);
     setIsPhoneInvalid(false);
     setIsAddressInvalid(false);
     setIsPaymentMethodInvalid(false);
 
-    // Проверка заполненности полей
     const isNameEmpty = name.trim() === '';
     const isPhoneEmpty = phone.trim() === '';
     const isAddressEmpty = activeTab === 'delivery' && address.trim() === '';
     const isPaymentMethodEmpty = activeTab === 'delivery' && paymentMethod.trim() === '';
 
-    // Установить состояние ошибок
     setIsNameInvalid(isNameEmpty);
     setIsPhoneInvalid(isPhoneEmpty);
     setIsAddressInvalid(isAddressEmpty);
     setIsPaymentMethodInvalid(isPaymentMethodEmpty);
 
-    // Если есть ошибки, прервать отправку
     if (isNameEmpty || isPhoneEmpty || (activeTab === 'delivery' && (isAddressEmpty || isPaymentMethodEmpty))) {
-        console.log('Форма не отправлена из-за ошибок валидации');
-        return;
+      return;
     }
 
-    // Формируем список выбранных блюд
     const items = cartItems.map(item => {
-        const price = typeof item.price === 'string' ? parseFloat(item.price.replace(/[^\d.-]/g, '')) : item.price;
-        const totalItemPrice = price * item.quantity; // Считаем общую цену для позиции
-        return `
-            <li>
-                <strong>${item.title}</strong> - ₽${price} x ${item.quantity} = ₽${totalItemPrice.toFixed(0)}
-            </li>
-        `;
-    }).join('');
+      // Получаем цену, приводим к числу
+      const price = typeof item.price === 'string' ? 
+          parseFloat(item.price.replace(/[^\d.-]/g, '')) : 
+          item.price;
 
-    // Определяем способ получения
-    const pickupMethod = activeTab === 'pickup' ? pickupComment : ''; // Если самовывоз, используем pickupComment, иначе оставляем пустым
+      // Проверяем на NaN и отрицательные значения
+      const basePrice = isNaN(price) || price < 0 ? 0 : price;
 
-    // Отправка данных на сервер
+      return {
+          title: item.title,
+          basePrice: basePrice,  // Здесь передаем basePrice
+          quantity: item.quantity, // Количество
+      };
+  });
+    
+    // Логируем перед отправкой
+    console.log('Отправляемые элементы:', items);
+
+    const pickupMethod = activeTab === 'pickup' ? pickupComment : '';
+    
     try {
-        const response = await fetch('https://cafepause.vercel.app/api/send-order', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                name,
-                phone,
-                address,
-                comment, // Comment для любых общих комментариев
-                pickupComment: pickupMethod, // Передаем способ получения
-                paymentMethod,
-                items // передаем список блюд
-            }),
-        });
+      const response = await fetch('https://cafepause.vercel.app/api/send-order', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+              name,
+              phone,
+              address,
+              comment,
+              pickupComment: pickupMethod,
+              paymentMethod,
+              items,
+              activeTab
+          }),
+      });
 
-        if (response.ok) {
-            // Обработка успешного заказа
-            console.log('Заказ успешно отправлен');
-            clearCart(); // Очистка корзины после успешной отправки
-            alert('Ваш заказ успешно отправлен!'); // Уведомление пользователя
-        } else {
-            console.error('Ошибка при отправке заказа:', response.statusText);
-            alert('Ошибка при отправке заказа. Попробуйте еще раз.');
-        }
-    } catch (error) {
-        console.error('Ошибка при отправке заказа:', error);
-        alert('При отправке заказа произошла ошибка. Проверьте подключение к интернету и попробуйте еще раз.');
-    }
-};
+      if (response.ok) {
+          clearCart();
+          alert('Ваш заказ успешно отправлен!');
+      } else {
+          alert('Ошибка при отправке заказа. Попробуйте еще раз.');
+      }
+  } catch (error) {
+      alert('При отправке заказа произошла ошибка. Проверьте подключение к интернету и попробуйте еще раз.');
+  }
+  };
 
-
+  const totalCost = calculateTotalCost();
+  const itemCount = cartItems.length;
 
   return (
     <div className="flex flex-col gap-3">
@@ -192,7 +188,10 @@ export default function Cart() {
                   />
                   <div className="flex flex-col gap-1 items-start justify-center">
                     <h4 className="text-small font-semibold leading-none text-default-600 text-left">{cartItem.title}</h4>
-                    <p className="text-md pt-2 font-bold text-default-500">₽{(parseFloat(String(cartItem.price)) * cartItem.quantity).toFixed(0)}</p>
+                    {/* Обратите внимание на изменение ниже */}
+                    <p className="text-md pt-2 font-bold text-default-500">
+                      ₽{((typeof cartItem.price === 'string' ? parseFloat(cartItem.price.replace(/[^\d.-]/g, '')) : cartItem.price) * cartItem.quantity).toFixed(0)} 
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
@@ -202,8 +201,7 @@ export default function Cart() {
                 </div>
               </CardHeader>
             </Card>
-          ))}
-
+            ))}
           <div className='text-center'>
             <Button startContent={<DeleteIcon />} className="w-max" color="danger" variant="light" onClick={clearCart}>Очистить корзину</Button>
           </div>
@@ -217,7 +215,7 @@ export default function Cart() {
               onClick={() => {
                 setActiveTab('pickup');
                 localStorage.setItem('activeTab', 'pickup');
-                setPaymentMethod(''); // Сбросить выбор способа оплаты
+                setPaymentMethod('');
               }} 
               startContent={<RestaurantIcon />}
               color={activeTab === 'pickup' ? 'success' : 'default'}
@@ -248,7 +246,7 @@ export default function Cart() {
                   value={name}
                   onChange={(e) => {
                     setName(e.target.value);
-                    setIsNameInvalid(false); // Сбрасываем ошибку, когда пользователь начинает вводить текст
+                    setIsNameInvalid(false);
                   }}
                   isRequired
                   variant="bordered"
@@ -260,7 +258,7 @@ export default function Cart() {
                   value={phone}
                   onChange={(e) => {
                     setPhone(e.target.value);
-                    setIsPhoneInvalid(false); // Сбрасываем ошибку
+                    setIsPhoneInvalid(false);
                   }}
                   variant="bordered"
                   type="tel"
@@ -285,7 +283,7 @@ export default function Cart() {
                   value={name}
                   onChange={(e) => {
                     setName(e.target.value);
-                    setIsNameInvalid(false); // Сбрасываем ошибку
+                    setIsNameInvalid(false);
                   }}
                   isRequired
                   variant="bordered"
@@ -297,7 +295,7 @@ export default function Cart() {
                   value={phone}
                   onChange={(e) => {
                     setPhone(e.target.value);
-                    setIsPhoneInvalid(false); // Сбрасываем ошибку
+                    setIsPhoneInvalid(false);
                   }}
                   variant="bordered"
                   type="tel"
@@ -310,7 +308,7 @@ export default function Cart() {
                   value={address}
                   onChange={(e) => {
                     setAddress(e.target.value);
-                    setIsAddressInvalid(false); // Сбрасываем ошибку
+                    setIsAddressInvalid(false);
                   }}
                   variant="bordered"
                   type="text"
@@ -329,34 +327,35 @@ export default function Cart() {
             </Card>
           )}
           
-          {activeTab === 'delivery' && ( // Условие для отображения RadioGroup только для доставки
+          {activeTab === 'delivery' && (
             <>
               <p className='font-bold mx-1 pt-3'>Выберите способ оплаты</p>
               <RadioGroup 
                 value={paymentMethod}
                 color="success" 
                 onChange={(e) => {
-                  setPaymentMethod(e.target.value);  // Извлекаем значение из события
-                  setIsPaymentMethodInvalid(false);   // Сбрасываем ошибку при выборе
+                  setPaymentMethod(e.target.value);
+                  setIsPaymentMethodInvalid(false);
                 }}
-            >
-                <Radio value="online" isInvalid={isPaymentMethodInvalid && paymentMethod === ''}>
+              >
+                <Radio value="Онлайн-оплата" isInvalid={isPaymentMethodInvalid && paymentMethod === ''}>
                   Онлайн-оплата
                 </Radio>
-                <Radio value="cash" isInvalid={isPaymentMethodInvalid && paymentMethod === ''}>
+                <Radio value="Наличными курьеру" isInvalid={isPaymentMethodInvalid && paymentMethod === ''}>
                   Наличными курьеру
                 </Radio>
-                <Radio value="transfer" isInvalid={isPaymentMethodInvalid && paymentMethod === ''}>
+                <Radio value="Переводом на карту" isInvalid={isPaymentMethodInvalid && paymentMethod === ''}>
                   Переводом на карту
                 </Radio>
-                </RadioGroup>
+              </RadioGroup>
               {isPaymentMethodInvalid && (
                 <p className="text-[#f31260]">Пожалуйста, выберите способ оплаты.</p>
               )}
             </>
           )}
-            <div className='text-center sticky bottom-[90px]'><Button startContent={<OrderplustIcon/>} type="submit" variant='shadow' color="success" className="w-min font-normal rounded-full">Сделать заказ</Button></div>
-        
+          <div className='text-center sticky bottom-[90px]'>
+            <Button startContent={<OrderplustIcon />} type="submit" variant='shadow' color="success" className="w-min font-normal rounded-full">Сделать заказ</Button>
+          </div>
         </form>
       ) : (
         <p className='text-center grid justify-items-center h-full w-full left-0 absolute content-center top-0'>
