@@ -85,7 +85,7 @@ const mailOptions = {
     subject: 'Новый заказ',
     html: `
     <div style="border-radius:30px; font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; background-color: #f7f7f7; color: #333;">
-        <img src="${logoUrl}" alt="Логотип кафе Пауза" style="width: 150px display: block; margin: 0 auto; max-width: 100%; height: auto;"/>
+        <img src="${logoUrl}" alt="Логотип кафе Пауза" style="width: 150px; display: block; margin: 0 auto; max-width: 100%; height: auto;"/>
         <h3>Заказ №${orderId} от ${orderDate}</h3>
         <p><strong>Имя:</strong> ${name}</p>
         <p><strong>Телефон:</strong> ${phone}</p>
