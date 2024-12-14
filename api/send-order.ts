@@ -79,33 +79,33 @@ app.post('/api/send-order', (req: Request, res: Response) => {
   const totalItemCount = itemsWithDetails.reduce((total: number, item) => total + item.quantity, 0);
   const totalCost = itemsWithDetails.reduce((total: number, item) => total + item.totalItemPrice, 0);
 
-const mailOptions = {
-    from: process.env.MAIL_USER,
-    to: 'wooddooff@mail.ru',
-    subject: 'Новый заказ',
-    html: `
-    <div style="border-radius:30px; font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; background-color: #f7f7f7; color: #333;">
-        <img src="${logoUrl}" alt="Логотип кафе Пауза" style="width: 150px; display: block; margin: 0 auto; max-width: 100%; height: auto;"/>
-        <h3>Заказ №${orderId} от ${orderDate}</h3>
-        <p><strong>Имя:</strong> ${name}</p>
-        <p><strong>Телефон:</strong> ${phone}</p>
-        <p><strong>Адрес:</strong> ${activeTab === 'delivery' ? address : 'Кафе Пауза (ул. Каммаева, 47)'}</p>
-        <p><strong>Комментарий:</strong> ${activeTab === 'pickup' ? (pickupComment || '(Покупатель не оставил комментарий)') : (comment || 'Покупатель не оставил комментарий')}</p>
-        <p><strong>Способ получения:</strong> ${activeTab === 'pickup' ? 'Самовывоз' : 'Доставка'}</p>
-        <p><strong>Способ оплаты:</strong> ${paymentMethod || 'В кафе'}</p>
-        <h3 style="color: #444; border-bottom: 1px solid #eee; padding-bottom: 5px;margin-bottom:0;">Заказанные блюда:</h3>
-            <ul style="list-style-type: none; padding: 0;">
-            ${itemsWithDetails.map(item => `
-                <li>
-                    <strong>${item.title}</strong> - ₽${item.basePrice ? item.basePrice.toFixed(0) : '0'} за шт. 
-                    x ${item.quantity} = ₽${item.totalItemPrice ? item.totalItemPrice.toFixed(0) : '0'} (Общая стоимость)
-                </li>`).join('')}
-        </ul>
-        <h1 style="margin-bottom:0;">Всего наименований: ${totalItemCount}</h1>
-        <h1>Итого: ₽${totalCost.toFixed(0)}</h1>
-    </div>
-    `,
-};
+    const mailOptions = {
+        from: process.env.MAIL_USER,
+        to: 'wooddooff@mail.ru',
+        subject: 'Новый заказ',
+        html: `
+        <div style="border-radius:30px; font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; background-color: #f7f7f7; color: #333;">
+            <img src="${logoUrl}" alt="Логотип кафе Пауза" style="width: 150px; display: block; margin: 0 auto; max-width: 100%; height: auto;"/>
+            <h3>Заказ №${orderId} от ${orderDate}</h3>
+            <p><strong>Имя:</strong> ${name}</p>
+            <p><strong>Телефон:</strong>+7${phone}</p>
+            <p><strong>Адрес:</strong> ${activeTab === 'delivery' ? address : 'Кафе Пауза (ул. Каммаева, 47)'}</p>
+            <p><strong>Комментарий:</strong> ${activeTab === 'pickup' ? (pickupComment || 'Покупатель не оставил комментарий') : (comment || 'Покупатель не оставил комментарий')}</p>
+            <p><strong>Способ получения:</strong> ${activeTab === 'pickup' ? 'Самовывоз' : 'Доставка'}</p>
+            <p><strong>Способ оплаты:</strong> ${paymentMethod || 'В кафе'}</p>
+            <h3 style="color: #444; border-bottom: 1px solid #eee; padding-bottom: 5px;margin-bottom:0;">Заказанные блюда:</h3>
+                <ul style="list-style-type: none; padding: 0;">
+                ${itemsWithDetails.map(item => `
+                    <li>
+                        <strong>${item.title}</strong> - ₽${item.basePrice ? item.basePrice.toFixed(0) : '0'} за шт. 
+                        x ${item.quantity} = ₽${item.totalItemPrice ? item.totalItemPrice.toFixed(0) : '0'} (Общая стоимость)
+                    </li>`).join('')}
+            </ul>
+            <h1 style="margin-bottom:0;">Всего наименований: ${totalItemCount}</h1>
+            <h1>Итого: ₽${totalCost.toFixed(0)}</h1>
+        </div>
+        `,
+    };
 
 
     // Отправка почты
