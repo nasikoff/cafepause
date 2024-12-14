@@ -114,7 +114,7 @@ export default function App() {
     setNotification({ message: `${item.title} добавлено в корзину`, visible: true, type: 'success' });
     setTimeout(() => {
         setNotification(prev => ({ ...prev, visible: false }));
-    }, 3000);
+    }, 2000);
 };
  
   const handleButtonClick = (item: MenuItem) => {
@@ -126,7 +126,7 @@ export default function App() {
     }
     setTimeout(() => {
       setNotification(prev => ({ ...prev, visible: false }));
-    }, 3000);
+    }, 2000);
   };
 
   return (

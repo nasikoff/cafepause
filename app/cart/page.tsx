@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from 'react';
-import { Button, Card, CardBody, CardHeader, Image, Input, Radio, RadioGroup, Textarea } from '@nextui-org/react';
+import { Button, Card, CardBody, CardHeader, Checkbox, Form, Image, Input, Radio, RadioGroup, Textarea } from '@nextui-org/react';
 import { CartPlusIcon, DeleteIcon, DeliverytIcon, OrderplustIcon, RestaurantIcon } from '@/components/icons';
 import { useRouter } from 'next/navigation';
 
@@ -15,19 +15,21 @@ interface MenuItem {
 }
 
 export default function Cart() {
-  const [cartItems, setCartItems] = useState<MenuItem[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
-  const [address, setAddress] = useState('');
-  const [comment, setComment] = useState('');
-  const [pickupComment, setPickupComment] = useState('');
-  const [activeTab, setActiveTab] = useState<string>('pickup');
-  const [paymentMethod, setPaymentMethod] = useState<string>('');
-  const [isNameInvalid, setIsNameInvalid] = useState(false);
-  const [isPhoneInvalid, setIsPhoneInvalid] = useState(false);
-  const [isAddressInvalid, setIsAddressInvalid] = useState(false);
-  const [isPaymentMethodInvalid, setIsPaymentMethodInvalid] = useState(false);
+  const [ cartItems, setCartItems ] = useState<MenuItem[]>([]); 
+  const [ isLoading, setIsLoading ] = useState(true);
+  const [ name, setName ] = useState('');
+  const [ phone, setPhone ] = useState('');
+  const [ address, setAddress ] = useState('');
+  const [ comment, setComment ] = useState('');
+  const [ pickupComment, setPickupComment ] = useState('');
+  const [ activeTab, setActiveTab ] = useState<string>('pickup');
+  const [ paymentMethod, setPaymentMethod ] = useState<string>('');
+  const [ isNameInvalid, setIsNameInvalid ] = useState(false);
+  const [ isPhoneInvalid, setIsPhoneInvalid ] = useState(false);
+  const [ isAddressInvalid, setIsAddressInvalid ] = useState(false);
+  const [ isPaymentMethodInvalid, setIsPaymentMethodInvalid ] = useState(false);
+  const [ isTermsAgreed, setIsTermsAgreed ] = useState(false); // New state for the checkbox
+  const [ isTermsError, setIsTermsError ] = useState(false); // State for error message
   const router = useRouter();
 
   const handleClick = () => {
@@ -84,75 +86,79 @@ export default function Cart() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
+  
     setIsNameInvalid(false);
     setIsPhoneInvalid(false);
     setIsAddressInvalid(false);
     setIsPaymentMethodInvalid(false);
+    setIsTermsError(false); // Reset terms error on submit
 
-    const isNameEmpty = name.trim() === '';
-    const isPhoneEmpty = phone.trim() === '';
-    const isAddressEmpty = activeTab === 'delivery' && address.trim() === '';
-    const isPaymentMethodEmpty = activeTab === 'delivery' && paymentMethod.trim() === '';
+    const isNameInvalid = /[^a-zA-Zа-яА-ЯёЁ\s]/.test(name) || name.trim() === '';
+    const isPhoneInvalid = phone.trim() === '' || phone.length !== 10;
+    const isAddressInvalid = activeTab === 'delivery' && address.trim() === '';
+    const isPaymentMethodInvalid = activeTab === 'delivery' && paymentMethod.trim() === '';
 
-    setIsNameInvalid(isNameEmpty);
-    setIsPhoneInvalid(isPhoneEmpty);
-    setIsAddressInvalid(isAddressEmpty);
-    setIsPaymentMethodInvalid(isPaymentMethodEmpty);
-
-    if (isNameEmpty || isPhoneEmpty || (activeTab === 'delivery' && (isAddressEmpty || isPaymentMethodEmpty))) {
+    setIsNameInvalid(isNameInvalid);
+    setIsPhoneInvalid(isPhoneInvalid);
+    setIsAddressInvalid(isAddressInvalid);
+    setIsPaymentMethodInvalid(isPaymentMethodInvalid);
+    
+    if (!isTermsAgreed) {
+      setIsTermsError(true); // Show error message
       return;
     }
-
+    // Проверяем, есть ли ошибки валидации
+    if (isNameInvalid || isPhoneInvalid || (activeTab === 'delivery' && (isAddressInvalid || isPaymentMethodInvalid))) {
+      return;
+    }
+  
+    // Основная логика отправки заказа
     const items = cartItems.map(item => {
-      // Получаем цену, приводим к числу
-      const price = typeof item.price === 'string' ? 
-          parseFloat(item.price.replace(/[^\d.-]/g, '')) : 
-          item.price;
-
-      // Проверяем на NaN и отрицательные значения
+      const price = typeof item.price === 'string' ?
+        parseFloat(item.price.replace(/[^\d.-]/g, '')) :
+        item.price;
       const basePrice = isNaN(price) || price < 0 ? 0 : price;
-
+  
       return {
-          title: item.title,
-          basePrice: basePrice,  // Здесь передаем basePrice
-          quantity: item.quantity, // Количество
+        title: item.title,
+        basePrice: basePrice,
+        quantity: item.quantity,
       };
-  });
-    
-    // Логируем перед отправкой
+    });
+  
     console.log('Отправляемые элементы:', items);
-
+  
     const pickupMethod = activeTab === 'pickup' ? pickupComment : '';
-    
+  
     try {
       const response = await fetch('https://cafepause.vercel.app/api/send-order', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-              name,
-              phone,
-              address,
-              comment,
-              pickupComment: pickupMethod,
-              paymentMethod,
-              items,
-              activeTab
-          }),
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+          phone,
+          address,
+          comment,
+          pickupComment: pickupMethod,
+          paymentMethod,
+          items,
+          activeTab,
+        }),
       });
-
+  
       if (response.ok) {
-          clearCart();
-          alert('Ваш заказ успешно отправлен!');
+        clearCart();
+        alert('Ваш заказ успешно отправлен!');
       } else {
-          alert('Ошибка при отправке заказа. Попробуйте еще раз.');
+        alert('Ошибка при отправке заказа. Попробуйте еще раз.');
       }
-  } catch (error) {
+    } catch (error) {
       alert('При отправке заказа произошла ошибка. Проверьте подключение к интернету и попробуйте еще раз.');
-  }
+    }
   };
+  
 
   const totalCost = calculateTotalCost();
   const itemCount = cartItems.length;
@@ -162,7 +168,7 @@ export default function Cart() {
       {isLoading ? (
         <p className="text-center">😊 Смотрим корзину</p>
       ) : cartItems.length > 0 ? (
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <Form onSubmit={handleSubmit} className="flex items-stretch flex-col gap-4">
           <Card className="bg-transparent !p-0">
             <CardBody className='!p-0'>
               <h4 className="font-bold text-lg pb-3">
@@ -212,7 +218,7 @@ export default function Cart() {
           <p className='font-bold mx-1 pt-3'>Выберите способ получения</p>
           <div className="flex gap-2">
             <Button 
-              onClick={() => {
+              onPress={() => {
                 setActiveTab('pickup');
                 localStorage.setItem('activeTab', 'pickup');
                 setPaymentMethod('');
@@ -225,7 +231,7 @@ export default function Cart() {
               Самовывоз
             </Button>
             <Button 
-              onClick={() => {
+              onPress={() => {
                 setActiveTab('delivery');
                 localStorage.setItem('activeTab', 'delivery');
               }} 
@@ -241,33 +247,62 @@ export default function Cart() {
           {activeTab === 'pickup' ? (
             <Card className='py-0'>
               <CardBody className='gap-2'>
-                <Input
-                  label="Ваше имя"
+              <Input
+                  label="Имя"
+                  placeholder="Введите ваше имя"
+                  style={{ fontSize: '16px' }}
                   value={name}
                   onChange={(e) => {
-                    setName(e.target.value);
-                    setIsNameInvalid(false);
+                    const value = e.target.value; // Сохраняем полное вводимое значение
+
+                    // Установка ошибки, если введённое значение содержит символы или цифры
+                    if (/[^a-zA-Zа-яА-ЯёЁ\s]/.test(value)) {
+                      setIsNameInvalid(true);
+                    } else {
+                      setIsNameInvalid(false);
+                    }
+
+                    setName(value); // Устанавливаем значение имени
                   }}
                   isRequired
+                  maxLength={15}
                   variant="bordered"
-                  errorMessage={isNameInvalid ? "Введите ваше имя" : ""}
+                  errorMessage={isNameInvalid ? "Имя не должно содержать цифры, пробелы и символы" : ""}
                   isInvalid={isNameInvalid}
                 />
                 <Input
-                  label="Номер телефона"
-                  value={phone}
-                  onChange={(e) => {
-                    setPhone(e.target.value);
-                    setIsPhoneInvalid(false);
-                  }}
-                  variant="bordered"
-                  type="tel"
-                  isRequired
-                  errorMessage={isPhoneInvalid ? "Введите номер телефона" : ""}
-                  isInvalid={isPhoneInvalid}
+                    label="Телефон"
+                    placeholder="Введите номер телефона"
+                    startContent={
+                        <div className="pointer-events-none flex items-center">
+                            <span className="text-default-400">+7</span>
+                        </div>
+                    }
+                    value={phone}
+                    maxLength={10}
+                    minLength={10}
+                    style={{ fontSize: '16px' }}
+                    onChange={(e) => {
+                        const value = e.target.value.replace(/[^\d]/g, '');
+                        setPhone(value);
+
+                        // Если длина номера равна 10, устанавливаем isPhoneInvalid в false
+                        if (value.length === 10) {
+                            setIsPhoneInvalid(false);
+                        } else {
+                            setIsPhoneInvalid(value.length > 0 && value[0] === '7');
+                        }
+                    }}
+                    variant="bordered"
+                    type="tel"
+                    isRequired
+                    errorMessage={isPhoneInvalid ? "Введите корректный номер" : "Введите номер телефона"}
+                    isInvalid={isPhoneInvalid}
                 />
                 <Textarea
                   label="Комментарий"
+                  placeholder="Есть что-то особенное, что вы хотите добавить к вашему заказу? Напишите комментарий!"
+                  style={{ fontSize: '16px' }}
                   value={pickupComment}
                   onChange={(e) => setPickupComment(e.target.value)}
                   variant="bordered"
@@ -278,33 +313,66 @@ export default function Cart() {
           ) : (
             <Card className='py-0'>
               <CardBody className='gap-2'>
-                <Input
-                  label="Ваше имя"
+              <Input
+                  label="Имя"
+                  placeholder="Введите ваше имя"
+                  style={{ fontSize: '16px' }}
                   value={name}
                   onChange={(e) => {
-                    setName(e.target.value);
-                    setIsNameInvalid(false);
+                    const value = e.target.value; // Сохраняем полное вводимое значение
+
+                    // Установка ошибки, если введённое значение содержит символы или цифры
+                    if (/[^a-zA-Zа-яА-ЯёЁ\s]/.test(value)) {
+                      setIsNameInvalid(true);
+                    } else {
+                      setIsNameInvalid(false);
+                    }
+
+                    setName(value); // Устанавливаем значение имени
                   }}
                   isRequired
+                  maxLength={15}
                   variant="bordered"
-                  errorMessage={isNameInvalid ? "Введите ваше имя" : ""}
+                  errorMessage={isNameInvalid ? "Имя не должно содержать цифры, пробелы и символы" : ""}
                   isInvalid={isNameInvalid}
                 />
-                <Input
-                  label="Номер телефона"
-                  value={phone}
-                  onChange={(e) => {
-                    setPhone(e.target.value);
-                    setIsPhoneInvalid(false);
-                  }}
-                  variant="bordered"
-                  type="tel"
-                  isRequired
-                  errorMessage={isPhoneInvalid ? "Введите номер телефона" : ""}
-                  isInvalid={isPhoneInvalid}
-                />
+               <Input
+                    label="Телефон"
+                    placeholder="Введите номер телефона"
+                    startContent={
+                        <div className="pointer-events-none flex items-center">
+                            <span className="text-default-400">+7</span>
+                        </div>
+                    }
+                    value={phone}
+                    maxLength={10}
+                    style={{ fontSize: '16px' }}
+                    onChange={(e) => {
+                        const value = e.target.value.replace(/[^\d]/g, '');
+                        setPhone(value);
+
+                        // Если длина номера равна 10, устанавливаем isPhoneInvalid в false
+                        if (value.length === 10) {
+                            setIsPhoneInvalid(false);
+                        } else {
+                            setIsPhoneInvalid(value.length > 0 && value[0] === '7');
+                        }
+                    }}
+                    variant="bordered"
+                    type="tel"
+                    isRequired
+                    errorMessage={isPhoneInvalid ? "Введите корректный номер" : "Введите номер телефона"}
+                    isInvalid={isPhoneInvalid}
+                  />
                 <Input
                   label="Адрес доставки"
+                  startContent={
+                    <div className="pointer-events-none flex items-center">
+                      <span className="text-default-400">Махачкала</span>
+                    </div>
+                  }
+                  placeholder="Укажите улицу, дом, квартиру"
+                  style={{ fontSize: '16px' }}
                   value={address}
                   onChange={(e) => {
                     setAddress(e.target.value);
@@ -318,6 +386,8 @@ export default function Cart() {
                 />
                 <Textarea
                   label="Комментарий"
+                  placeholder="Есть что-то особенное, что вы хотите добавить к вашему заказу? Напишите комментарий!"
+                  style={{ fontSize: '16px' }}
                   value={comment}
                   onChange={(e) => setComment(e.target.value)}
                   variant="bordered"
@@ -351,12 +421,26 @@ export default function Cart() {
               {isPaymentMethodInvalid && (
                 <p className="text-[#f31260]">Пожалуйста, выберите способ оплаты.</p>
               )}
+           
             </>
           )}
+              <Checkbox 
+            isSelected={isTermsAgreed} 
+            onChange={(e) => {
+              setIsTermsAgreed(e.target.checked);
+              if (e.target.checked) {
+                setIsTermsError(false); // Hide error when checked
+              }
+            }} 
+            color="success"
+          >
+            Я согласен(на) с условиями обработки персональных данных
+          </Checkbox>
+          {isTermsError && <p className="text-[#f31260]">Пожалуйста, согласитесь с условиями перед отправкой заказа.</p>}
           <div className='text-center sticky bottom-[90px]'>
             <Button startContent={<OrderplustIcon />} type="submit" variant='shadow' color="success" className="w-min font-normal rounded-full">Сделать заказ</Button>
           </div>
-        </form>
+        </Form>
       ) : (
         <p className='text-center grid justify-items-center h-full w-full left-0 absolute content-center top-0'>
           <CartPlusIcon className='mb-3'/>
