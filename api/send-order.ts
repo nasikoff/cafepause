@@ -88,7 +88,7 @@ app.post('/api/send-order', (req: Request, res: Response) => {
             <img src="${logoUrl}" alt="Логотип кафе Пауза" style="width: 150px; display: block; margin: 0 auto; max-width: 100%; height: auto;"/>
             <h3>Заказ №${orderId} от ${orderDate}</h3>
             <p><strong>Имя:</strong> ${name}</p>
-            <p><strong>Телефон:</strong>+7${phone}</p>
+            <p><strong>Телефон:</strong> +7${phone}</p>
             <p><strong>Адрес:</strong> ${activeTab === 'delivery' ? address : 'Кафе Пауза (ул. Каммаева, 47)'}</p>
             <p><strong>Комментарий:</strong> ${activeTab === 'pickup' ? (pickupComment || 'Покупатель не оставил комментарий') : (comment || 'Покупатель не оставил комментарий')}</p>
             <p><strong>Способ получения:</strong> ${activeTab === 'pickup' ? 'Самовывоз' : 'Доставка'}</p>
